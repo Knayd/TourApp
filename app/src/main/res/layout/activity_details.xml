@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/details_name"
+        style="@style/details_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name Placeholder"/>
@@ -23,6 +24,7 @@
 
     <TextView
         android:id="@+id/details_description"
+        style="@style/details_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description Placeholder"/>
@@ -30,6 +32,7 @@
 
     <TextView
         android:id="@+id/details_website"
+        style="@style/details_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Website Placeholder"/>
@@ -37,6 +40,7 @@
 
     <TextView
         android:id="@+id/details_tel"
+        style="@style/details_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tel Placeholder"/>

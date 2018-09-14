@@ -21,7 +21,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClicked {
-        public void onItemClicked(int position, String name, String description, String website, String tel);
+        void onItemClicked(int position, String name, String description, String website, String tel, int img);
     }
 
     @Override
@@ -55,23 +55,28 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mItemDescription = itemView.findViewById(R.id.item_description);
             mItemWebsite = itemView.findViewById(R.id.item_website);
             mItemTel = itemView.findViewById(R.id.item_tel);
-            mItemImg = itemView.findViewById(R.id.item_img);
             mLayout = itemView.findViewById(R.id.item_layout);
+
+            mItemImg = itemView.findViewById(R.id.item_img);
+
         }
 
-        public void bindView(List<Place> list, final int position){
+        //Sets the data to the view
+        void bindView(final List<Place> list, final int position){
             mItemName.setText(list.get(position).getmName());
             mItemDescription.setText(list.get(position).getmDescription());
             mItemWebsite.setText(list.get(position).getmWebsite());
             mItemTel.setText(list.get(position).getmTel());
+            mItemImg.setImageResource(list.get(position).getmImgSrc());
 
+            //Listens when an item is clicked, and executes the interface's method
             mLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mCallback.onItemClicked(position,mItemName.getText().toString(),
                             mItemDescription.getText().toString(),
                             mItemWebsite.getText().toString(),
-                            mItemTel.getText().toString());
+                            mItemTel.getText().toString(),list.get(position).getmImgSrc());
                 }
             });
         }
