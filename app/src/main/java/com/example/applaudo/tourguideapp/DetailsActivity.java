@@ -55,7 +55,11 @@ public class DetailsActivity extends AppCompatActivity {
         mDetailsTel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchDialer(mDetailsTel.getText().toString());
+                //Checks for a valid Tel
+                if(!mDetailsTel.getText().equals("-")) {
+                    launchDialer(mDetailsTel.getText().toString());
+                }
+
             }
         });
 
@@ -63,8 +67,12 @@ public class DetailsActivity extends AppCompatActivity {
         mDetailsWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
-                startActivity(intent);
+                //Checks for a valid website
+                if(!mDetailsWebsite.getText().equals("-")) {
+                    Intent intent =  PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
+                    startActivity(intent);
+                }
+
             }
         });
     }

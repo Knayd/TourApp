@@ -91,8 +91,6 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     //Implementation of the interface
     @Override
     public void onItemClicked(int position, String name, String description, String website, String tel, int img) {
-        Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_LONG).show();
-
         Intent intent = DetailsActivity.getInstance(getContext(), name, description, website, tel, img);
         startActivity(intent);
 
