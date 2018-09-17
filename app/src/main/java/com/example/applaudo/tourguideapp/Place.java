@@ -7,7 +7,7 @@ public class Place {
     private String mWebsite;
     private String mTel;
 
-    public Place(int mImgSrc, String mName, String mDescription, String mWebsite, String mTel) {
+    Place(int mImgSrc, String mName, String mDescription, String mWebsite, String mTel) {
         this.mImgSrc = mImgSrc;
         this.mName = mName;
         this.mDescription = mDescription;

@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    android:layout_margin="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
         android:layout_below="@+id/item_img"
-        >
-    </LinearLayout>
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/darker_gray"/>
 
     <ImageView
         android:id="@+id/item_img"
         android:layout_width="132dp"
         android:layout_height="132dp"
-        android:scaleType="centerCrop"
-        android:background="@android:color/black"/>
+        android:background="@android:color/black"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/item_name"
-        android:textStyle="bold"
         style="@style/item_list_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_img"
         android:layout_toRightOf="@id/item_img"
         android:text="Placeholder for name"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/item_description"
         style="@style/item_list_text_style"
-        android:layout_width="wrap_content"
-        android:layout_toRightOf="@id/item_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/item_name"
-        android:text="Placeholder for description"
-        android:layout_height="wrap_content" />
+        android:layout_toEndOf="@id/item_img"
+        android:layout_toRightOf="@id/item_img"
+        android:text="Placeholder for description" />
 
 
     <TextView
         android:id="@+id/item_tel"
         style="@style/item_list_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/item_img"
         android:layout_below="@id/item_description"
-        android:text="Placeholder for tel"
-        />
+        android:layout_toEndOf="@id/item_img"
+        android:layout_toRightOf="@id/item_img"
+        android:text="Placeholder for tel" />
 
     <TextView
         android:id="@+id/item_website"
         style="@style/item_list_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/item_img"
         android:layout_below="@id/item_tel"
-        android:text="Placeholder for website"
-        />
+        android:layout_toEndOf="@+id/item_img"
+        android:layout_toRightOf="@+id/item_img"
+        android:text="Placeholder for website" />
 
 
 </RelativeLayout>

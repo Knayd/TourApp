@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity"
-    >
+    tools:context=".DetailsActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,62 +14,57 @@
             android:id="@+id/details_img"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:scaleType="centerCrop"
             android:background="@android:color/darker_gray"
-            />
+            android:scaleType="centerCrop" />
         <!-- Height on the image is fixed because for some reason the LinearLayout didn't want to "match the parent" -->
 
         <TextView
             android:id="@+id/details_name"
-            android:textStyle="bold"
             style="@style/details_text_style"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Name Placeholder"
-             />
+            android:textStyle="bold" />
 
 
         <TextView
             android:id="@+id/details_description"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             style="@style/details_text_style"
-            android:text="Description Placeholder"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description Placeholder" />
 
         <TextView
             android:id="@+id/text_website"
             style="@style/details_text_style"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/rv_item_website"
-            />
+            android:layout_height="wrap_content"
+            android:text="@string/rv_item_website" />
 
         <TextView
             android:id="@+id/details_website"
 
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             style="@style/details_text_style"
-            android:textColor="@android:color/holo_blue_dark"
-            android:text="Website Placeholder"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Website Placeholder"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/text_tel"
             style="@style/details_text_style"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:text="@string/rv_item_tel"
-            />
+            android:layout_height="wrap_content"
+            android:text="@string/rv_item_tel" />
 
 
         <TextView
             android:id="@+id/details_tel"
 
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             style="@style/details_text_style"
-            android:text="Tel Placeholder"/>
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tel Placeholder" />
 
 
     </LinearLayout>

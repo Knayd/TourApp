@@ -80,7 +80,7 @@ public class DetailsActivity extends AppCompatActivity {
         mDetailsDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchMaps("");
+                launchMaps();
             }
         });
     }
@@ -94,9 +94,9 @@ public class DetailsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void launchMaps(String location) {
+    private void launchMaps() {
 
-        location = "37.7749,-122.4194";
+        String location = "37.7749,-122.4194";
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("geo:" + location));

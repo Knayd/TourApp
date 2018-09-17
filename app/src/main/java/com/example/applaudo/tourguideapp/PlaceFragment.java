@@ -45,7 +45,7 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
 
             } else if (mLoadType == 1) {
                 //TAB COFFEE
-
+                //container.setBackgroundColor(Color.BLACK);
                 placesList.add(new Place(R.drawable.juan_valdez_2, "Juan Valdez Café Galerías", "Juan Valdez Café Galerías, San Salvador", "www.juanvaldezcafe.com", "2264 9999"));
                 placesList.add(new Place(R.drawable.andian_2, "Andian Pâttiserie & Cafe", "Plaza Catalonia #260 El, Calle La Mascota, San Salvador", "www.facebook.com/AndianSV/?utm_source=tripadvisor&utm_medium=referral", "2223 8770"));
                 placesList.add(new Place(R.drawable.gecko_2, "Gecko Cafe", "89 Avenida Norte, San Salvador", "www.facebook.com/Paletas-Gecko-289454007760463", "2527 5976"));

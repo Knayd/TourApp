@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TourGuideApp</string>
+    <string name="tab_str_1">Comida</string>
+    <string name="tab_str_2">Café</string>
+    <string name="tab_str_3">Hoteles</string>
+    <string name="tab_str_4">Turismo</string>
+    <string name="rv_item_name">Nombre:</string>
+    <string name="rv_item_description">"Descripción: "</string>
+    <string name="rv_item_website">Sito web:</string>
+    <string name="rv_item_tel">"Tel: "</string>
+</resources>
