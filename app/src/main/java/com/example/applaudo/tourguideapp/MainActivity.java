@@ -1,5 +1,6 @@
 package com.example.applaudo.tourguideapp;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -47,16 +48,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
+            //This is where I store the type based on the tab number
+            Bundle tabData= new Bundle();
+            tabData.putInt("tabnumber",position);
+
+            Places1Fragment frag = new Places1Fragment();
+            frag.setArguments(tabData);
+
             switch (position) {
                 case 0:
-                    return new Places1Fragment();
+                    return frag;
                 case 1:
-                    return new Places2Fragment();
+                    return frag;
                 case 2:
-                    return new Places3Fragment();
+                    return frag;
                 default:
-                    return new Places4Fragment();
-
+                    return frag;
             }
 
         }
