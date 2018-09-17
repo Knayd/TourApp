@@ -27,8 +27,8 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
         <!-- This is for the Up Button in the Details activity -->
-        <activity android:name=".DetailsActivity"></activity>
-        <activity android:name=".PlaceWebView"></activity>
+        <activity android:name=".DetailsActivity"> </activity>
+        <activity android:name=".PlaceWebView"> </activity>
     </application>
 
 </manifest>

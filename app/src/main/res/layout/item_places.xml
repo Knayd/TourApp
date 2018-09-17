@@ -18,10 +18,12 @@
         android:id="@+id/item_img"
         android:layout_width="132dp"
         android:layout_height="132dp"
+        android:scaleType="centerCrop"
         android:background="@android:color/black"/>
 
     <TextView
         android:id="@+id/item_name"
+        android:textStyle="bold"
         style="@style/item_list_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">TourGuideApp</string>
-    <string name="tab_str_1"> Places 1 </string>
-    <string name="tab_str_2"> Places 2 </string>
-    <string name="tab_str_3"> Places 3 </string>
-    <string name="tab_str_4"> Places 4 </string>
+    <string name="tab_str_1"> Food </string>
+    <string name="tab_str_2"> Coffee </string>
+    <string name="tab_str_3"> Hotels </string>
+    <string name="tab_str_4"> Tourism </string>
 
     <string name="rv_item_name"> Name: </string>
     <string name="rv_item_description"> Description: </string>

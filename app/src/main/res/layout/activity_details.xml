@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsActivity"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/details_img"
-        android:layout_width="100dp"
-        android:background="@android:color/darker_gray"
-        android:layout_height="100dp"
-        />
-
-    <TextView
-        android:id="@+id/details_name"
-        style="@style/details_text_style"
-        android:layout_width="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name Placeholder"/>
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/details_img"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/darker_gray"
+            />
+        <!-- Height on the image is fixed because for some reason the LinearLayout didn't want to "match the parent" -->
+
+        <TextView
+            android:id="@+id/details_name"
+            android:textStyle="bold"
+            style="@style/details_text_style"
+            android:text="Name Placeholder"/>
 
 
-    <TextView
-        android:id="@+id/details_description"
-        style="@style/details_text_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description Placeholder"/>
+        <TextView
+            android:id="@+id/details_description"
+            style="@style/details_text_style"
+            android:text="Description Placeholder"/>
 
 
-    <TextView
-        android:id="@+id/details_website"
-        style="@style/details_text_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Website Placeholder"/>
+        <TextView
+            android:id="@+id/details_website"
+            style="@style/details_text_style"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="Website Placeholder"/>
 
+        <TextView
+            android:id="@+id/details_tel"
+            style="@style/details_text_style"
+            android:text="Tel Placeholder"/>
 
-    <TextView
-        android:id="@+id/details_tel"
-        style="@style/details_text_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tel Placeholder"/>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

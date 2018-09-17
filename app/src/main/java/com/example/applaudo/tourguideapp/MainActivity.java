@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             return getResources().getString(mTabTitles[position]);
         }
 
-        public PlacesFragmentPagerAdapter(FragmentManager fm) {
+        PlacesFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
