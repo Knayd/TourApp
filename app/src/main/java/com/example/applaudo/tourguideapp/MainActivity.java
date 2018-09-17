@@ -1,6 +1,5 @@
 package com.example.applaudo.tourguideapp;
 
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             Bundle tabData= new Bundle();
             tabData.putInt("tabnumber",position);
 
-            Places1Fragment frag = new Places1Fragment();
+            PlaceFragment frag = new PlaceFragment();
             frag.setArguments(tabData);
 
             switch (position) {

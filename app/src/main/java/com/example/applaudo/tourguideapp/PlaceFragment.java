@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Places1Fragment extends Fragment implements PlacesAdapter.OnItemClicked {
+public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClicked {
 
 
     @Nullable
@@ -35,17 +35,17 @@ public class Places1Fragment extends Fragment implements PlacesAdapter.OnItemCli
             int mLoadType = getTabData.getInt("tabnumber");
             if (mLoadType ==0){
                 //TAB 1
-                placesList.add(new Place(R.drawable.ic_launcher_foreground,"Tab1","Tab1","Tab1","12345678"));
+                placesList.add(new Place(R.drawable.ic_launcher_foreground,"Tab1","Tab1","www.facebook.com","12345678"));
 
             } else if(mLoadType ==1) {
                 //TAB 2
-                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab2","Tab2","Tab2","123456789"));
+                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab2","Tab2","www.youtube.com","123456789"));
             } else if(mLoadType ==2) {
                 //TAB 3
-                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab3","Tab3","Tab3","123456789"));
+                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab3","Tab3","stackoverflow.com","123456789"));
             } else {
                 //TAB 4
-                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab4","Tab4","Tab4","123456789"));
+                placesList.add(new Place(R.drawable.ic_launcher_background,"Tab4","Tab4","developer.android.com","123456789"));
             }
         }
 
@@ -65,7 +65,6 @@ public class Places1Fragment extends Fragment implements PlacesAdapter.OnItemCli
         rv.setAdapter(adapter);
 
         return v;
-
     }
 
     //Implementation of the interface

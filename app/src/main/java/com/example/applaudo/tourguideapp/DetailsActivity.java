@@ -2,10 +2,9 @@ package com.example.applaudo.tourguideapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,23 +38,33 @@ public class DetailsActivity extends AppCompatActivity {
         //Gets the views
         TextView mDetailsName = findViewById(R.id.details_name);
         TextView mDetailsDescription = findViewById(R.id.details_description);
-        TextView mDetailsWebsite = findViewById(R.id.details_website);
+        final TextView mDetailsWebsite = findViewById(R.id.details_website);
         final TextView mDetailsTel = findViewById(R.id.details_tel);
         ImageView mDetailsImage = findViewById(R.id.details_img);
 
         //Sets the views
-        mDetailsName.setText(data.getString(EXT_DETAILS_NAME));
-        mDetailsDescription.setText(data.getString(EXT_DETAILS_DESC));
-        mDetailsWebsite.setText(data.getString(EXT_DETAILS_WEB));
-        mDetailsTel.setText(data.getString(EXT_DETAILS_TEL));
-        mDetailsImage.setImageResource(data.getInt(EXT_DETAILS_IMG));
-
+        if (data != null) {
+            mDetailsName.setText(data.getString(EXT_DETAILS_NAME));
+            mDetailsDescription.setText(data.getString(EXT_DETAILS_DESC));
+            mDetailsWebsite.setText(data.getString(EXT_DETAILS_WEB));
+            mDetailsTel.setText(data.getString(EXT_DETAILS_TEL));
+            mDetailsImage.setImageResource(data.getInt(EXT_DETAILS_IMG));
+        }
 
         //This is so it can handle the dial
         mDetailsTel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchDialer(mDetailsTel.getText().toString());
+            }
+        });
+
+        //This is to handle the Web display
+        mDetailsWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
+                startActivity(intent);
             }
         });
     }

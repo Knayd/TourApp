@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.applaudo.tourguideapp">
 
+    <!-- To enable WebView navigation -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+
+        android:usesCleartextTraffic="true"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,12 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity"/>
-        <!-- This is for the Up Button in the Details activity -->
-        <activity android:name=".DetailsActivity">
 
-        </activity>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        <!-- This is for the Up Button in the Details activity -->
+        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".PlaceWebView"></activity>
     </application>
 
 </manifest>
