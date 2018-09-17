@@ -21,13 +21,14 @@ public class DetailsActivity extends AppCompatActivity {
     public static Intent getInstance(Context context, String name, String description, String website, String tel, int img) {
         Intent intent = new Intent(context, DetailsActivity.class);
 
-        intent.putExtra(EXT_DETAILS_NAME,name);
-        intent.putExtra(EXT_DETAILS_DESC,description);
-        intent.putExtra(EXT_DETAILS_TEL,tel);
-        intent.putExtra(EXT_DETAILS_WEB,website);
+        intent.putExtra(EXT_DETAILS_NAME, name);
+        intent.putExtra(EXT_DETAILS_DESC, description);
+        intent.putExtra(EXT_DETAILS_TEL, tel);
+        intent.putExtra(EXT_DETAILS_WEB, website);
         intent.putExtra(EXT_DETAILS_IMG, img);
         return intent;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Checks for a valid Tel
-                if(!mDetailsTel.getText().equals("-")) {
+                if (!mDetailsTel.getText().equals("-")) {
                     launchDialer(mDetailsTel.getText().toString());
                 }
 
@@ -68,8 +69,8 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Checks for a valid website
-                if(!mDetailsWebsite.getText().equals("-")) {
-                    Intent intent =  PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
+                if (!mDetailsWebsite.getText().equals("-")) {
+                    Intent intent = PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
                     startActivity(intent);
                 }
 
@@ -78,11 +79,11 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     //Method to do the dialing
-    private void launchDialer(String number){
+    private void launchDialer(String number) {
 
-    Intent intent = new Intent(Intent.ACTION_DIAL);
-    intent.setData(Uri.parse("tel:"+number));
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + number));
 
-    startActivity(intent);
+        startActivity(intent);
     }
 }

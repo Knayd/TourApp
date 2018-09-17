@@ -15,7 +15,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<Place> mPlaceList;
     private OnItemClicked mCallback;
 
-    public PlacesAdapter(List<Place> placeList, OnItemClicked mCallback) {
+    PlacesAdapter(List<Place> placeList, OnItemClicked mCallback) {
         this.mPlaceList = placeList;
         this.mCallback = mCallback;
     }
@@ -27,15 +27,15 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Inflates de view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_places,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_places, parent, false);
         return new PlacesViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            PlacesViewHolder pv = (PlacesViewHolder) holder;
-            //Sets the values to the VH
-            pv.bindView(mPlaceList,position);
+        PlacesViewHolder pv = (PlacesViewHolder) holder;
+        //Sets the values to the VH
+        pv.bindView(mPlaceList, position);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return mPlaceList.size();
     }
 
-    class PlacesViewHolder extends RecyclerView.ViewHolder{
+    class PlacesViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView mItemName, mItemDescription, mItemWebsite, mItemTel;
         private final ImageView mItemImg;
@@ -62,7 +62,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
 
         //Sets the data to the view
-        void bindView(final List<Place> list, final int position){
+        void bindView(final List<Place> list, final int position) {
             mItemName.setText(list.get(position).getmName());
             mItemDescription.setText(list.get(position).getmDescription());
             mItemWebsite.setText(list.get(position).getmWebsite());
@@ -73,15 +73,14 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallback.onItemClicked(position,mItemName.getText().toString(),
+                    mCallback.onItemClicked(position, mItemName.getText().toString(),
                             mItemDescription.getText().toString(),
                             mItemWebsite.getText().toString(),
-                            mItemTel.getText().toString(),list.get(position).getmImgSrc());
+                            mItemTel.getText().toString(), list.get(position).getmImgSrc());
                 }
             });
         }
     }
-
 
 
 }

@@ -16,7 +16,7 @@ public class PlaceWebView extends AppCompatActivity {
     //Factory method
     public static Intent getInstance(Context context, String url) {
         Intent intent = new Intent(context, PlaceWebView.class);
-        intent.putExtra(EXT_URL,url);
+        intent.putExtra(EXT_URL, url);
 
         return intent;
     }
@@ -42,7 +42,7 @@ public class PlaceWebView extends AppCompatActivity {
 
     }
 
-    private class WebHelper extends WebViewClient{
+    private class WebHelper extends WebViewClient {
         @Override
         //This is so it doesn't open a browser like an intent
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {

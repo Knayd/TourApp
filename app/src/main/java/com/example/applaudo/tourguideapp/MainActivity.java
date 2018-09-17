@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private class PlacesFragmentPagerAdapter extends FragmentPagerAdapter {
 
         //Stores the id of the tab titles resource
-        private int[] mTabTitles = {(R.string.tab_str_1),(R.string.tab_str_2),(R.string.tab_str_3),(R.string.tab_str_4)};
+        private int[] mTabTitles = {(R.string.tab_str_1), (R.string.tab_str_2), (R.string.tab_str_3), (R.string.tab_str_4)};
 
         @Nullable
         @Override
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             //This is where I store the type based on the tab number
-            Bundle tabData= new Bundle();
-            tabData.putInt("tabnumber",position);
+            Bundle tabData = new Bundle();
+            tabData.putInt("tabnumber", position);
 
             PlaceFragment frag = new PlaceFragment();
             frag.setArguments(tabData);
