@@ -73,7 +73,14 @@ public class DetailsActivity extends AppCompatActivity {
                     Intent intent = PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
                     startActivity(intent);
                 }
+            }
+        });
 
+        //This is to handle the maps display
+        mDetailsDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchMaps("");
             }
         });
     }
@@ -84,6 +91,16 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + number));
 
+        startActivity(intent);
+    }
+
+    private void launchMaps(String location) {
+
+        location = "37.7749,-122.4194";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("geo:" + location));
+        intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);
     }
 }

@@ -23,25 +23,54 @@
             android:id="@+id/details_name"
             android:textStyle="bold"
             style="@style/details_text_style"
-            android:text="Name Placeholder"/>
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Name Placeholder"
+             />
 
 
         <TextView
             android:id="@+id/details_description"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             style="@style/details_text_style"
             android:text="Description Placeholder"/>
 
+        <TextView
+            android:id="@+id/text_website"
+            style="@style/details_text_style"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/rv_item_website"
+            />
 
         <TextView
             android:id="@+id/details_website"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             style="@style/details_text_style"
             android:textColor="@android:color/holo_blue_dark"
             android:text="Website Placeholder"/>
 
         <TextView
+            android:id="@+id/text_tel"
+            style="@style/details_text_style"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/rv_item_tel"
+            />
+
+
+        <TextView
             android:id="@+id/details_tel"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             style="@style/details_text_style"
             android:text="Tel Placeholder"/>
+
+
 
     </LinearLayout>
 
