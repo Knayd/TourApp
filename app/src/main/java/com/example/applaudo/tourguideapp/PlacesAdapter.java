@@ -45,7 +45,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     class PlacesViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView mItemName, mItemDescription, mItemWebsite, mItemTel;
+        private final TextView mItemName, mItemDescription;
         private final ImageView mItemImg;
         private final View mLayout;
 
@@ -53,9 +53,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             mItemName = itemView.findViewById(R.id.item_name);
             mItemDescription = itemView.findViewById(R.id.item_description);
-            mItemWebsite = itemView.findViewById(R.id.item_website);
-            mItemTel = itemView.findViewById(R.id.item_tel);
-            mLayout = itemView.findViewById(R.id.item_layout);
+            mLayout = itemView.findViewById(R.id.item_container);
 
             mItemImg = itemView.findViewById(R.id.item_img);
 
@@ -65,8 +63,6 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         void bindView(final List<Place> list, final int position) {
             mItemName.setText(list.get(position).getmName());
             mItemDescription.setText(list.get(position).getmDescription());
-            mItemWebsite.setText(list.get(position).getmWebsite());
-            mItemTel.setText(list.get(position).getmTel());
             mItemImg.setImageResource(list.get(position).getmImgSrc());
 
             //Listens when an item is clicked, and executes the interface's method
@@ -75,8 +71,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 public void onClick(View v) {
                     mCallback.onItemClicked(position, mItemName.getText().toString(),
                             mItemDescription.getText().toString(),
-                            mItemWebsite.getText().toString(),
-                            mItemTel.getText().toString(), list.get(position).getmImgSrc());
+                            "","", list.get(position).getmImgSrc());
                 }
             });
         }

@@ -54,16 +54,7 @@ public class MainActivity extends AppCompatActivity {
             PlaceFragment frag = new PlaceFragment();
             frag.setArguments(tabData);
 
-            switch (position) {
-                case 0:
-                    return frag;
-                case 1:
-                    return frag;
-                case 2:
-                    return frag;
-                default:
-                    return frag;
-            }
+            return frag;
 
         }
 
