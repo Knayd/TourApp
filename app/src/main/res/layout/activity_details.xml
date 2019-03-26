@@ -25,61 +25,85 @@
 
         <TextView
             android:id="@+id/details_name"
-            style="@style/details_text_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            tools:text="Name Placeholder"
-            app:layout_constraintTop_toBottomOf="@id/details_img"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_horizontal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_img"
+            tools:text="Name Placeholder"
+            android:textAppearance="?android:textAppearanceMedium"
             />
 
-
-        <TextView
-            android:id="@+id/details_description"
-            style="@style/details_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Description Placeholder"
-            app:layout_constraintTop_toBottomOf="@id/details_name"
-            />
 
         <ImageView
             android:id="@+id/iv_detail_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_location"
-            app:layout_constraintTop_toBottomOf="@id/details_description"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/details_name" />
 
         <TextView
             android:id="@+id/details_location"
-            style="@style/details_text_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="Location Placeholder"
             app:layout_constraintStart_toEndOf="@id/iv_detail_location"
             app:layout_constraintTop_toTopOf="@id/iv_detail_location"
-            />
+            tools:text="Location Placeholder" />
+
+        <ImageView
+            android:id="@+id/iv_detail_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_planet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_detail_location" />
 
         <TextView
             android:id="@+id/details_website"
-            style="@style/details_text_style"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintStart_toEndOf="@id/iv_detail_website"
+            app:layout_constraintTop_toTopOf="@id/iv_detail_website"
             tools:text="Website Placeholder" />
 
 
+        <ImageView
+            android:id="@+id/iv_detail_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_detail_website" />
+
         <TextView
             android:id="@+id/details_tel"
-            style="@style/details_text_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/iv_detail_tel"
+            app:layout_constraintTop_toTopOf="@id/iv_detail_tel"
+            tools:text="Tel Placeholder" />
+
+        <TextView
+            android:id="@+id/details_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Tel Placeholder" />
+            app:layout_constraintTop_toBottomOf="@id/iv_detail_tel"
+            tools:text="Description Placeholder"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:justificationMode="inter_word"
+            />
 
     </android.support.constraint.ConstraintLayout>
 
