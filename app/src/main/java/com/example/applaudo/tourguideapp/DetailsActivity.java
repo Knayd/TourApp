@@ -11,30 +11,15 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private final static String EXT_DETAILS_NAME = "EXT_DETAILS_NAME";
-    private final static String EXT_DETAILS_DESC = "EXT_DETAILS_DESC";
-    private final static String EXT_DETAILS_TEL = "EXT_DETAILS_TEL";
-    private final static String EXT_DETAILS_WEB = "EXT_DETAILS_WEB";
-    private final static String EXT_DETAILS_IMG = "EXT_DETAILS_IMG";
-
-    //Factory method
-    public static Intent getInstance(Context context, String name, String description, String website, String tel, int img) {
-        Intent intent = new Intent(context, DetailsActivity.class);
-
-        intent.putExtra(EXT_DETAILS_NAME, name);
-        intent.putExtra(EXT_DETAILS_DESC, description);
-        intent.putExtra(EXT_DETAILS_TEL, tel);
-        intent.putExtra(EXT_DETAILS_WEB, website);
-        intent.putExtra(EXT_DETAILS_IMG, img);
-        return intent;
-    }
+    final static String EXTRA_PLACE = "extra_place";
+    private Place place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        Bundle data = getIntent().getExtras();
+        place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
 
         //Gets the views
         TextView mDetailsName = findViewById(R.id.details_name);
@@ -42,14 +27,16 @@ public class DetailsActivity extends AppCompatActivity {
         final TextView mDetailsWebsite = findViewById(R.id.details_website);
         final TextView mDetailsTel = findViewById(R.id.details_tel);
         ImageView mDetailsImage = findViewById(R.id.details_img);
+        TextView mDetailsLocation = findViewById(R.id.details_location);
 
         //Sets the views
-        if (data != null) {
-            mDetailsName.setText(data.getString(EXT_DETAILS_NAME));
-            mDetailsDescription.setText(data.getString(EXT_DETAILS_DESC));
-            mDetailsWebsite.setText(data.getString(EXT_DETAILS_WEB));
-            mDetailsTel.setText(data.getString(EXT_DETAILS_TEL));
-            mDetailsImage.setImageResource(data.getInt(EXT_DETAILS_IMG));
+        if (place != null) {
+            mDetailsName.setText(place.getmName());
+            mDetailsDescription.setText(place.getmDescription());
+            mDetailsWebsite.setText(place.getmWebsite());
+            mDetailsTel.setText(place.getmTel());
+            mDetailsImage.setImageResource(place.getmImgSrc());
+            mDetailsLocation.setText(place.getmLocation());
         }
 
         //This is so it can handle the dial
@@ -60,7 +47,6 @@ public class DetailsActivity extends AppCompatActivity {
                 if (!mDetailsTel.getText().equals("-")) {
                     launchDialer(mDetailsTel.getText().toString());
                 }
-
             }
         });
 

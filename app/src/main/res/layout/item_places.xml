@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Placeholder for description"
-            android:maxLines="1"
+            android:maxLines="3"
             android:padding="4dp"
             android:ellipsize="end"
             android:justificationMode="inter_word"

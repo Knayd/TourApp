@@ -53,7 +53,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/iv_detail_location"
             app:layout_constraintTop_toTopOf="@id/iv_detail_location"
-            tools:text="Location Placeholder" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Location Placeholder"
+            app:layout_constraintBottom_toBottomOf="@id/iv_detail_location"
+            android:layout_marginStart="8dp"
+            />
 
         <ImageView
             android:id="@+id/iv_detail_website"
@@ -72,6 +76,9 @@
             android:textColor="@android:color/holo_blue_dark"
             app:layout_constraintStart_toEndOf="@id/iv_detail_website"
             app:layout_constraintTop_toTopOf="@id/iv_detail_website"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_detail_website"
+            android:layout_marginStart="8dp"
             tools:text="Website Placeholder" />
 
 
@@ -91,7 +98,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/iv_detail_tel"
             app:layout_constraintTop_toTopOf="@id/iv_detail_tel"
-            tools:text="Tel Placeholder" />
+            tools:text="Tel Placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_detail_tel"
+            android:layout_marginStart="8dp"
+            />
 
         <TextView
             android:id="@+id/details_description"

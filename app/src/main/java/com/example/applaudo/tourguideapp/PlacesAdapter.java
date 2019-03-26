@@ -21,7 +21,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnItemClicked {
-        void onItemClicked(int position, String name, String description, String website, String tel, int img);
+        void onItemClicked(Place place);
     }
 
     @Override
@@ -69,9 +69,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mCallback.onItemClicked(position, mItemName.getText().toString(),
-                            mItemDescription.getText().toString(),
-                            "","", list.get(position).getmImgSrc());
+                    mCallback.onItemClicked(list.get(position));
                 }
             });
         }
