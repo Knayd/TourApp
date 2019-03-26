@@ -1,10 +1,11 @@
 package com.example.applaudo.tourguideapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,22 +20,27 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        Toolbar detailToolbar = findViewById(R.id.detail_toolbar);
+        setSupportActionBar(detailToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
 
+        setTitle(place.getmName());
+
         //Gets the views
-        TextView mDetailsName = findViewById(R.id.details_name);
         TextView mDetailsDescription = findViewById(R.id.details_description);
         final TextView mDetailsWebsite = findViewById(R.id.details_website);
         final TextView mDetailsTel = findViewById(R.id.details_tel);
         ImageView mDetailsImage = findViewById(R.id.details_img);
         TextView mDetailsLocation = findViewById(R.id.details_location);
+        View mTelButton = findViewById(R.id.view_tel_container);
+        View mWebsiteButton = findViewById(R.id.view_website_container);
+
 
         //Sets the views
         if (place != null) {
-            mDetailsName.setText(place.getmName());
             mDetailsDescription.setText(place.getmDescription());
-            mDetailsWebsite.setText(place.getmWebsite());
-            mDetailsTel.setText(place.getmTel());
             mDetailsImage.setImageResource(place.getmImgSrc());
             mDetailsLocation.setText(place.getmLocation());
         }
@@ -73,20 +79,31 @@ public class DetailsActivity extends AppCompatActivity {
 
     //Method to do the dialing
     private void launchDialer(String number) {
-
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + number));
-
         startActivity(intent);
     }
 
     private void launchMaps() {
-
         String location = "37.7749,-122.4194";
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("geo:" + location));
         intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);
+    }
+
+    private void setTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
