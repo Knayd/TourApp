@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     final static String EXTRA_PLACE = "extra_place";
+
     private Place place;
 
     @Override
@@ -30,13 +31,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         //Gets the views
         TextView mDetailsDescription = findViewById(R.id.details_description);
-        final TextView mDetailsWebsite = findViewById(R.id.details_website);
-        final TextView mDetailsTel = findViewById(R.id.details_tel);
         ImageView mDetailsImage = findViewById(R.id.details_img);
         TextView mDetailsLocation = findViewById(R.id.details_location);
         View mTelButton = findViewById(R.id.view_tel_container);
         View mWebsiteButton = findViewById(R.id.view_website_container);
 
+        mTelButton.setOnClickListener(this);
+        mWebsiteButton.setOnClickListener(this);
 
         //Sets the views
         if (place != null) {
@@ -44,29 +45,6 @@ public class DetailsActivity extends AppCompatActivity {
             mDetailsImage.setImageResource(place.getmImgSrc());
             mDetailsLocation.setText(place.getmLocation());
         }
-
-        //This is so it can handle the dial
-        mDetailsTel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Checks for a valid Tel
-                if (!mDetailsTel.getText().equals("-")) {
-                    launchDialer(mDetailsTel.getText().toString());
-                }
-            }
-        });
-
-        //This is to handle the Web display
-        mDetailsWebsite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Checks for a valid website
-                if (!mDetailsWebsite.getText().equals("-")) {
-                    Intent intent = PlaceWebView.getInstance(getApplicationContext(), mDetailsWebsite.getText().toString());
-                    startActivity(intent);
-                }
-            }
-        });
 
         //This is to handle the maps display
         mDetailsDescription.setOnClickListener(new View.OnClickListener() {
@@ -77,11 +55,25 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.view_tel_container:
+                launchDialer(place.getmTel());
+                break;
+            case R.id.view_website_container:
+                openWebView(place.getmWebsite());
+                break;
+        }
+    }
+
     //Method to do the dialing
     private void launchDialer(String number) {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + number));
-        startActivity(intent);
+        if (!number.equals("-")) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + number));
+            startActivity(intent);
+        }
     }
 
     private void launchMaps() {
@@ -97,6 +89,13 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
     }
 
+    private void openWebView(String url) {
+        if (!url.equals("-")) {
+            Intent intent = PlaceWebView.getInstance(getApplicationContext(), url);
+            startActivity(intent);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -106,4 +105,6 @@ public class DetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
