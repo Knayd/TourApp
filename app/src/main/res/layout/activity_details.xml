@@ -37,11 +37,13 @@
         <View
             android:id="@+id/view_website_container"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="24dp"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/button_background"
+            app:layout_constraintBottom_toTopOf="@id/tv_detail_location"
             app:layout_constraintEnd_toStartOf="@id/view_tel_container"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/details_img" />
 
@@ -50,6 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_planet"
             app:layout_constraintBottom_toBottomOf="@id/view_website_container"
             app:layout_constraintEnd_toStartOf="@id/details_website"
@@ -66,6 +70,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="@id/iv_detail_website"
             app:layout_constraintEnd_toEndOf="@id/view_website_container"
             app:layout_constraintStart_toEndOf="@id/iv_detail_website"
@@ -74,14 +79,15 @@
         <View
             android:id="@+id/view_tel_container"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="24dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/button_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/view_website_container"
-            app:layout_constraintTop_toBottomOf="@id/details_img" />
+            app:layout_constraintTop_toTopOf="@id/view_website_container"
+            app:layout_constraintBottom_toBottomOf="@id/view_website_container"
+            />
 
         <ImageView
             android:id="@+id/iv_detail_tel"
@@ -105,6 +111,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="@id/iv_detail_tel"
             app:layout_constraintEnd_toEndOf="@id/view_tel_container"
             app:layout_constraintStart_toEndOf="@id/iv_detail_tel"
@@ -113,7 +120,7 @@
 
         <TextView
             android:id="@+id/tv_detail_location"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -124,6 +131,7 @@
             android:textStyle="bold"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_website_container"
             />
 
