@@ -1,184 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/detail_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/detail_toolbar"
-            android:layout_width="0dp"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@android:color/white" />
 
-        <ImageView
-            android:id="@+id/details_img"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/detail_toolbar" />
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_toolbar">
 
-        <View
-            android:id="@+id/view_website_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/button_background"
-            app:layout_constraintBottom_toTopOf="@id/tv_detail_location"
-            app:layout_constraintEnd_toStartOf="@id/view_tel_container"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_img" />
-
-        <ImageView
-            android:id="@+id/iv_detail_website"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_planet"
-            app:layout_constraintBottom_toBottomOf="@id/view_website_container"
-            app:layout_constraintEnd_toStartOf="@id/details_website"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@id/view_website_container"
-            app:layout_constraintTop_toTopOf="@id/view_website_container" />
+            android:background="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/detail_toolbar">
 
-        <TextView
-            android:id="@+id/details_website"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/visit"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            app:layout_constraintBottom_toBottomOf="@id/iv_detail_website"
-            app:layout_constraintEnd_toEndOf="@id/view_website_container"
-            app:layout_constraintStart_toEndOf="@id/iv_detail_website"
-            app:layout_constraintTop_toTopOf="@id/iv_detail_website" />
+            <ImageView
+                android:id="@+id/details_img"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/darker_gray"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/view_tel_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/button_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/view_website_container"
-            app:layout_constraintTop_toTopOf="@id/view_website_container"
-            app:layout_constraintBottom_toBottomOf="@id/view_website_container"
-            />
+            <View
+                android:id="@+id/view_website_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/button_background"
+                app:layout_constraintBottom_toTopOf="@id/iv_location_icon"
+                app:layout_constraintEnd_toStartOf="@id/view_tel_container"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/details_img" />
 
-        <ImageView
-            android:id="@+id/iv_detail_tel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_phone"
-            app:layout_constraintBottom_toBottomOf="@id/view_tel_container"
-            app:layout_constraintEnd_toStartOf="@id/details_tel"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@id/view_tel_container"
+            <ImageView
+                android:id="@+id/iv_detail_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_planet"
+                app:layout_constraintBottom_toBottomOf="@id/view_website_container"
+                app:layout_constraintEnd_toStartOf="@id/details_website"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@id/view_website_container"
+                app:layout_constraintTop_toTopOf="@id/view_website_container" />
 
-            app:layout_constraintTop_toTopOf="@id/view_tel_container" />
+            <TextView
+                android:id="@+id/details_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/visit"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_detail_website"
+                app:layout_constraintEnd_toEndOf="@id/view_website_container"
+                app:layout_constraintStart_toEndOf="@id/iv_detail_website"
+                app:layout_constraintTop_toTopOf="@id/iv_detail_website" />
 
-        <TextView
-            android:id="@+id/details_tel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/call"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            app:layout_constraintBottom_toBottomOf="@id/iv_detail_tel"
-            app:layout_constraintEnd_toEndOf="@id/view_tel_container"
-            app:layout_constraintStart_toEndOf="@id/iv_detail_tel"
-            app:layout_constraintTop_toTopOf="@id/iv_detail_tel" />
+            <View
+                android:id="@+id/view_tel_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/button_background"
+                app:layout_constraintBottom_toBottomOf="@id/view_website_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/view_website_container"
+                app:layout_constraintTop_toTopOf="@id/view_website_container" />
 
+            <ImageView
+                android:id="@+id/iv_detail_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_phone"
+                app:layout_constraintBottom_toBottomOf="@id/view_tel_container"
+                app:layout_constraintEnd_toStartOf="@id/details_tel"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@id/view_tel_container"
 
-        <TextView
-            android:id="@+id/tv_detail_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/direction"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_website_container"
-            />
+                app:layout_constraintTop_toTopOf="@id/view_tel_container" />
 
-        <TextView
-            android:id="@+id/details_location"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_location"
-            tools:text="Location Placeholder"
-            android:justificationMode="inter_word"
-            android:lineSpacingExtra="4dp"
-            />
-
-        <View
-            android:id="@+id/view_location_divider"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_location"
-            android:background="@android:color/darker_gray"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="16dp"
-            />
+            <TextView
+                android:id="@+id/details_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/call"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_detail_tel"
+                app:layout_constraintEnd_toEndOf="@id/view_tel_container"
+                app:layout_constraintStart_toEndOf="@id/iv_detail_tel"
+                app:layout_constraintTop_toTopOf="@id/iv_detail_tel" />
 
 
-        <TextView
-            android:id="@+id/details_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:justificationMode="inter_word"
-            app:layout_constraintTop_toBottomOf="@id/view_location_divider"
-            tools:text="Description Placeholder"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:lineSpacingExtra="4dp"
-            />
+            <TextView
+                android:id="@+id/tv_detail_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/direction"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/iv_location_icon"
+                app:layout_constraintTop_toTopOf="@id/iv_location_icon"
+                app:layout_constraintBottom_toBottomOf="@id/iv_location_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                />
 
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/iv_location_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_website_container" />
 
-</ScrollView>
+            <TextView
+                android:id="@+id/details_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_location_icon"
+                tools:text="Location Placeholder" />
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/details_location"
+                tools:context="com.example.applaudo.tourguideapp.DetailsActivity" />
+
+            <View
+                android:id="@+id/view_location_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/map" />
+
+
+            <TextView
+                android:id="@+id/details_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_location_divider"
+                tools:text="Description Placeholder" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
