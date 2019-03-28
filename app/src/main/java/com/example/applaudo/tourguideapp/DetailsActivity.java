@@ -55,14 +55,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             mDetailsImage.setImageResource(place.getmImgSrc());
             mDetailsLocation.setText(place.getmLocation());
         }
-
-        //This is to handle the maps display
-        mDetailsDescription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchMaps();
-            }
-        });
     }
 
     @Override
