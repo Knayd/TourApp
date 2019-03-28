@@ -125,9 +125,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng place = new LatLng(13.701649, -89.224681);
+        googleMap.addMarker(new MarkerOptions().position(place)
+                .title("Ubicación"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(place));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 15.0f));
     }
 }
