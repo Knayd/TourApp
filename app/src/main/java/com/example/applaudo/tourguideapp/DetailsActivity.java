@@ -10,7 +10,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     final static String EXTRA_PLACE = "extra_place";
 
@@ -21,6 +28,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        prepareMap();
+
         Toolbar detailToolbar = findViewById(R.id.detail_toolbar);
         setSupportActionBar(detailToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -28,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
 
         setTitle(place.getmName());
+
 
         //Gets the views
         TextView mDetailsDescription = findViewById(R.id.details_description);
@@ -96,6 +106,12 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    private void prepareMap(){
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -107,4 +123,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        LatLng sydney = new LatLng(-33.852, 151.211);
+        googleMap.addMarker(new MarkerOptions().position(sydney)
+                .title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
 }
