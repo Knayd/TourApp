@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.applaudo.tourguideapp.util.DetailActions;
+import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
+import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.activities.DetailsActivity;
 
 import java.util.ArrayList;
 

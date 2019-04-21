@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applaudo.tourguideapp.util.DetailActions;
+import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,8 +23,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
-    final static String EXTRA_PLACE = "extra_place";
-    final static String EXTRA_ACTION = "extra_action";
+    public final static String EXTRA_PLACE = "extra_place";
+    public final static String EXTRA_ACTION = "extra_action";
 
     private Place place;
     private String action;

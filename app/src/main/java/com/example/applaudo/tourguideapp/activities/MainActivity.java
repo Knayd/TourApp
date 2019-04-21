@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.applaudo.tourguideapp.fragments.PlaceFragment;
+import com.example.applaudo.tourguideapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

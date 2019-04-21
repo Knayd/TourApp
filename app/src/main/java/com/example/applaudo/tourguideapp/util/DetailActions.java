@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.util;
 
 public class DetailActions {
     public static final String ACTION_ADD = "action_add";

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".activities.DetailsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/detail_toolbar"
@@ -178,7 +178,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/details_location"
-                tools:context="com.example.applaudo.tourguideapp.DetailsActivity"
+                tools:context="com.example.applaudo.tourguideapp.activities.DetailsActivity"
                 map:mapType="normal"
                 map:liteMode="true"
                 />

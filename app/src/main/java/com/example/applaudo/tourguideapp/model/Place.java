@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,7 +13,7 @@ public class Place implements Parcelable {
     private String mLatitude;
     private String mLongitude;
 
-    Place(int mImgSrc, String mName, String mLocation, String mWebsite, String mTel, String mDescription, String mLatitude, String mLongitude) {
+    public Place(int mImgSrc, String mName, String mLocation, String mWebsite, String mTel, String mDescription, String mLatitude, String mLongitude) {
         this.mLocation = mLocation;
         this.mImgSrc = mImgSrc;
         this.mName = mName;

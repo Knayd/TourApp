@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.model.Place;
 
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<Place> mPlaceList;
     private OnItemClicked mCallback;
 
-    PlacesAdapter(List<Place> placeList, OnItemClicked mCallback) {
+    public PlacesAdapter(List<Place> placeList, OnItemClicked mCallback) {
         this.mPlaceList = placeList;
         this.mCallback = mCallback;
     }

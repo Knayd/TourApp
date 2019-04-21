@@ -1,4 +1,4 @@
-package com.example.applaudo.tourguideapp;
+package com.example.applaudo.tourguideapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import com.example.applaudo.tourguideapp.util.DetailActions;
+import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
+import com.example.applaudo.tourguideapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
