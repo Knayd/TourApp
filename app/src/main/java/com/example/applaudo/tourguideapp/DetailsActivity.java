@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -69,6 +70,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+
     //Method to do the dialing
     private void launchDialer(String number) {
         if (!number.equals("-")) {
@@ -76,15 +78,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             intent.setData(Uri.parse("tel:" + number));
             startActivity(intent);
         }
-    }
-
-    private void launchMaps() {
-        String location = "37.7749,-122.4194";
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("geo:" + location));
-        intent.setPackage("com.google.android.apps.maps");
-        startActivity(intent);
     }
 
     private void setTitle(String title) {
@@ -98,17 +91,31 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void prepareMap(){
+    private void prepareMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+    private void addPlaceToVisitLater(Place place) {
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detail_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_add_place:
+                addPlaceToVisitLater(place);
                 break;
         }
         return super.onOptionsItemSelected(item);
