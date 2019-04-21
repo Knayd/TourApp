@@ -92,6 +92,7 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     public void onItemClicked(Place place) {
         Intent intent = new Intent(getContext(), DetailsActivity.class);
         intent.putExtra(DetailsActivity.EXTRA_PLACE, place);
+        intent.putExtra(DetailsActivity.EXTRA_ACTION, DetailActions.ACTION_ADD);
         startActivity(intent);
     }
 

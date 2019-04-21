@@ -20,6 +20,11 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.mCallback = mCallback;
     }
 
+    public void updatePlaces(List<Place> newPlaces){
+        mPlaceList = newPlaces;
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClicked {
         void onItemClicked(Place place);
     }

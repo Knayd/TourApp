@@ -21,8 +21,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     final static String EXTRA_PLACE = "extra_place";
+    final static String EXTRA_ACTION = "extra_action";
 
     private Place place;
+    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
+        action = getIntent().getExtras().getString(EXTRA_ACTION);
 
         setTitle(place.getmName());
 
@@ -103,7 +106,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.detail_menu, menu);
+        switch (action) {
+            case DetailActions.ACTION_ADD:
+                getMenuInflater().inflate(R.menu.detail_add_menu, menu);
+                break;
+            case DetailActions.ACTION_DELETE:
+                getMenuInflater().inflate(R.menu.detail_delete_menu, menu);
+                break;
+        }
+
         return super.onPrepareOptionsMenu(menu);
     }
 
