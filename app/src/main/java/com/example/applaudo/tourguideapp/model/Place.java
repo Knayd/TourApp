@@ -1,16 +1,28 @@
 package com.example.applaudo.tourguideapp.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+@Entity(tableName = "places_table")
 public class Place implements Parcelable {
+
+    @ColumnInfo(name = "img_src")
     private int mImgSrc;
+    @ColumnInfo(name = "name")
     private String mName;
+    @ColumnInfo(name = "description")
     private String mDescription;
+    @ColumnInfo(name = "website")
     private String mWebsite;
+    @ColumnInfo(name = "tel")
     private String mTel;
+    @ColumnInfo(name = "location")
     private String mLocation;
+    @ColumnInfo(name = "lat")
     private String mLatitude;
+    @ColumnInfo(name = "lon")
     private String mLongitude;
 
     public Place(int mImgSrc, String mName, String mLocation, String mWebsite, String mTel, String mDescription, String mLatitude, String mLongitude) {

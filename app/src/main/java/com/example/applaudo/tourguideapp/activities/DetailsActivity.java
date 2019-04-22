@@ -108,7 +108,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         switch (action) {
             case DetailActions.ACTION_ADD:
                 getMenuInflater().inflate(R.menu.detail_add_menu, menu);
@@ -117,10 +117,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 getMenuInflater().inflate(R.menu.detail_delete_menu, menu);
                 break;
         }
-
-        return super.onPrepareOptionsMenu(menu);
+        return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
