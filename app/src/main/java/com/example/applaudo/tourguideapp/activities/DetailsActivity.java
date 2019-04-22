@@ -1,8 +1,10 @@
 package com.example.applaudo.tourguideapp.activities;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.viewmodel.DetailViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +31,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     private Place place;
     private String action;
+    private DetailViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
         action = getIntent().getExtras().getString(EXTRA_ACTION);
+
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
 
         setTitle(place.getName());
 
@@ -104,7 +110,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void addPlaceToVisitLater(Place place) {
+        viewModel.addPlace(place);
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.added_complete_message, place.getName()), Snackbar.LENGTH_LONG).show();
+    }
 
+    private void deletePlaceFromVisitLater(Place place){
+        viewModel.deletePlace(place);
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.deleted_complete_message, place.getName()), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -129,6 +141,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.action_add_place:
                 addPlaceToVisitLater(place);
                 break;
+            case R.id.action_delete_place:
+                deletePlaceFromVisitLater(place);
+
         }
         return super.onOptionsItemSelected(item);
     }

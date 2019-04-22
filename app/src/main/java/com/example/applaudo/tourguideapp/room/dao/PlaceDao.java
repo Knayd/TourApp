@@ -2,7 +2,9 @@ package com.example.applaudo.tourguideapp.room.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.example.applaudo.tourguideapp.model.Place;
@@ -12,7 +14,7 @@ import java.util.List;
 @Dao
 public interface PlaceDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Place place);
 
     @Query("DELETE FROM places_table")
@@ -20,4 +22,7 @@ public interface PlaceDao {
 
     @Query("SELECT * from places_table")
     LiveData<List<Place>> getPlacesToVisit();
+
+    @Delete
+    void delete(Place place);
 }

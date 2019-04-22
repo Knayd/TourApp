@@ -1,7 +1,6 @@
 package com.example.applaudo.tourguideapp.activities;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.applaudo.tourguideapp.VisitLaterViewModel;
+import com.example.applaudo.tourguideapp.viewmodel.VisitLaterViewModel;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
@@ -52,7 +51,7 @@ public class VisitLaterActivity extends AppCompatActivity implements PlacesAdapt
     }
 
     private void init(){
-        viewModel.getRepository().getAllPlaces().observe(this, new Observer<List<Place>>() {
+        viewModel.getPlaces().observe(this, new Observer<List<Place>>() {
             @Override
             public void onChanged(@Nullable List<Place> places) {
                 setPlacesToVisit(places);
