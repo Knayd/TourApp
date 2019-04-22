@@ -69,9 +69,9 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         //Sets the data to the view
         void bindView(final List<Place> list, final int position) {
-            mItemName.setText(list.get(position).getmName());
-            mItemDescription.setText(list.get(position).getmDescription());
-            mItemImg.setImageResource(list.get(position).getmImgSrc());
+            mItemName.setText(list.get(position).getName());
+            mItemDescription.setText(list.get(position).getDescription());
+            mItemImg.setImageResource(list.get(position).getImgSrc());
 
             //Listens when an item is clicked, and executes the interface's method
             mLayout.setOnClickListener(new View.OnClickListener() {

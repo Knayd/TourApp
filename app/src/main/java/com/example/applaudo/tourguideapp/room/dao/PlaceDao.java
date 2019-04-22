@@ -1,5 +1,7 @@
 package com.example.applaudo.tourguideapp.room.dao;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -7,6 +9,7 @@ import com.example.applaudo.tourguideapp.model.Place;
 
 import java.util.List;
 
+@Dao
 public interface PlaceDao {
 
     @Insert
@@ -16,5 +19,5 @@ public interface PlaceDao {
     void deleteAll();
 
     @Query("SELECT * from places_table")
-    List<Place> getPlacesToVisit();
+    LiveData<List<Place>> getPlacesToVisit();
 }

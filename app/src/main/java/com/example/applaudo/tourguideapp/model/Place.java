@@ -2,14 +2,18 @@ package com.example.applaudo.tourguideapp.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "places_table")
 public class Place implements Parcelable {
 
     @ColumnInfo(name = "img_src")
     private int mImgSrc;
+    @NonNull
+    @PrimaryKey
     @ColumnInfo(name = "name")
     private String mName;
     @ColumnInfo(name = "description")
@@ -36,70 +40,69 @@ public class Place implements Parcelable {
         this.mLongitude = mLongitude;
     }
 
-    public int getmImgSrc() {
+    public int getImgSrc() {
         return mImgSrc;
     }
 
-    public void setmImgSrc(int mImgSrc) {
+    public void setImgSrc(int mImgSrc) {
         this.mImgSrc = mImgSrc;
     }
 
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
+    public void setName(String mName) {
         this.mName = mName;
     }
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public void setmDescription(String mDescription) {
+    public void setDescription(String mDescription) {
         this.mDescription = mDescription;
     }
 
-    public String getmWebsite() {
+    public String getWebsite() {
         return mWebsite;
     }
 
-    public void setmWebsite(String mWebsite) {
+    public void setWebsite(String mWebsite) {
         this.mWebsite = mWebsite;
     }
 
-    public String getmTel() {
+    public String getTel() {
         return mTel;
     }
 
-    public void setmTel(String mTel) {
+    public void setTel(String mTel) {
         this.mTel = mTel;
     }
 
-    public String getmLocation() {
+    public String getLocation() {
         return mLocation;
     }
 
-    public void setmLocation(String mLocation) {
+    public void setLocation(String mLocation) {
         this.mLocation = mLocation;
     }
 
-    public String getmLatitude() {
+    public String getLatitude() {
         return mLatitude;
     }
 
-    public void setmLatitude(String mLatitude) {
+    public void setLatitude(String mLatitude) {
         this.mLatitude = mLatitude;
     }
 
-    public String getmLongitude() {
+    public String getLongitude() {
         return mLongitude;
     }
 
-    public void setmLongitude(String mLongitude) {
+    public void setLongitude(String mLongitude) {
         this.mLongitude = mLongitude;
     }
-
 
     @Override
     public int describeContents() {

@@ -43,7 +43,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
         action = getIntent().getExtras().getString(EXTRA_ACTION);
 
-        setTitle(place.getmName());
+        setTitle(place.getName());
 
 
         //Gets the views
@@ -58,9 +58,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         //Sets the views
         if (place != null) {
-            mDetailsDescription.setText(place.getmDescription());
-            mDetailsImage.setImageResource(place.getmImgSrc());
-            mDetailsLocation.setText(place.getmLocation());
+            mDetailsDescription.setText(place.getDescription());
+            mDetailsImage.setImageResource(place.getImgSrc());
+            mDetailsLocation.setText(place.getLocation());
         }
     }
 
@@ -68,10 +68,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.view_tel_container:
-                launchDialer(place.getmTel());
+                launchDialer(place.getTel());
                 break;
             case R.id.view_website_container:
-                openWebView(place.getmWebsite());
+                openWebView(place.getWebsite());
                 break;
         }
     }
