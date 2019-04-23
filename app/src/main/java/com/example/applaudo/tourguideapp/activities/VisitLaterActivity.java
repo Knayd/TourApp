@@ -113,20 +113,4 @@ public class VisitLaterActivity extends AppCompatActivity implements PlacesAdapt
     public void onItemClicked(Place place) {
         openPlaceDetail(place);
     }
-
-    private ArrayList<Place> mockData() {
-
-        ArrayList<Place> placesList = new ArrayList<>();
-
-        placesList.add(new Place(R.drawable.la_bodega_2, "La Bodega Italiana", "La Gran Vía, Carretera Panamericana y Calle Chiltiupán. Antiguo Cuscatlán, La Libertad, Centro Comercial La Gran Vía, Local 401 - 402", "bodegaitaliana.com.sv", "2536 8888", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.zanzibar_2, "Zanzibar", "Zanzibar, Colonia San Benito, San Salvador", "www.barzanzibar.com", "2511 4282", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.al_pomodoro_2, "Al Pomodoro", "Ave. La Revolución y Calle Circunvalación No. 184, San Salvador CP 1101", "alpomodoro.com.sv", "2243 7388", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.bravissimo_2, "Bravissimo", "Col. Escalón No. 127, Pje Istmania, San Salvador", "-", "2223 3986", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.la_pizzeria_2, "La Pizzeria", "Plaza Los Castaños, Avenida Masferrer Norte, San Salvador", "www.lapizzeria.com", "2566 6574", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.panino_2, "Panino's", "Playa el Tunco Plaza Tunco Town, El Tunco El Salvador", "www.facebook.com/pg/paninos.sv/about/?ref=page_internal", "7698 6999", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.royal_2, "Royal", "87 Avenida Sur, San Salvado", "-", "2264 0051", getResources().getString(R.string.description_placeholder), "", ""));
-        placesList.add(new Place(R.drawable.style68_2, "Style 68", "16 Avenida Nte, Santa Tecla", "www.facebook.com/Style68chinesecuisine", "2246 4875", getResources().getString(R.string.description_placeholder), "", ""));
-
-        return placesList;
-    }
 }

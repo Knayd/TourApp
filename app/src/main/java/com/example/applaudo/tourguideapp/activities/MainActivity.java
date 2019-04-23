@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //ViewPager adapter
-    private class PlacesFragmentPagerAdapter extends FragmentPagerAdapter {
+    private class PlacesFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         //Stores the id of the tab titles resource
         private int[] mTabTitles = {(R.string.tab_str_1), (R.string.tab_str_2), (R.string.tab_str_3), (R.string.tab_str_4)};

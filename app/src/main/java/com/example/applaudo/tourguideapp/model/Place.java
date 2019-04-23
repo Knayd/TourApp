@@ -7,29 +7,39 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "places_table")
 public class Place implements Parcelable {
 
     @ColumnInfo(name = "img_src")
-    private int mImgSrc;
+    @SerializedName("img_src")
+    private String mImgSrc;
     @NonNull
     @PrimaryKey
     @ColumnInfo(name = "name")
+    @SerializedName("name")
     private String mName;
     @ColumnInfo(name = "description")
+    @SerializedName("description")
     private String mDescription;
     @ColumnInfo(name = "website")
+    @SerializedName("website")
     private String mWebsite;
     @ColumnInfo(name = "tel")
+    @SerializedName("tel")
     private String mTel;
     @ColumnInfo(name = "location")
+    @SerializedName("location")
     private String mLocation;
     @ColumnInfo(name = "lat")
+    @SerializedName("lat")
     private String mLatitude;
     @ColumnInfo(name = "lon")
+    @SerializedName("lon")
     private String mLongitude;
 
-    public Place(int mImgSrc, String mName, String mLocation, String mWebsite, String mTel, String mDescription, String mLatitude, String mLongitude) {
+    public Place(String mImgSrc, String mName, String mLocation, String mWebsite, String mTel, String mDescription, String mLatitude, String mLongitude) {
         this.mLocation = mLocation;
         this.mImgSrc = mImgSrc;
         this.mName = mName;
@@ -40,11 +50,11 @@ public class Place implements Parcelable {
         this.mLongitude = mLongitude;
     }
 
-    public int getImgSrc() {
+    public String getImgSrc() {
         return mImgSrc;
     }
 
-    public void setImgSrc(int mImgSrc) {
+    public void setImgSrc(String mImgSrc) {
         this.mImgSrc = mImgSrc;
     }
 
@@ -104,6 +114,7 @@ public class Place implements Parcelable {
         this.mLongitude = mLongitude;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -111,7 +122,7 @@ public class Place implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.mImgSrc);
+        dest.writeString(this.mImgSrc);
         dest.writeString(this.mName);
         dest.writeString(this.mDescription);
         dest.writeString(this.mWebsite);
@@ -122,7 +133,7 @@ public class Place implements Parcelable {
     }
 
     protected Place(Parcel in) {
-        this.mImgSrc = in.readInt();
+        this.mImgSrc = in.readString();
         this.mName = in.readString();
         this.mDescription = in.readString();
         this.mWebsite = in.readString();
@@ -132,7 +143,7 @@ public class Place implements Parcelable {
         this.mLongitude = in.readString();
     }
 
-    public static final Parcelable.Creator<Place> CREATOR = new Parcelable.Creator<Place>() {
+    public static final Creator<Place> CREATOR = new Creator<Place>() {
         @Override
         public Place createFromParcel(Parcel source) {
             return new Place(source);

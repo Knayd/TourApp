@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applaudo.tourguideapp.GlideApp;
 import com.example.applaudo.tourguideapp.R;
 import com.example.applaudo.tourguideapp.model.Place;
 
@@ -71,7 +72,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         void bindView(final List<Place> list, final int position) {
             mItemName.setText(list.get(position).getName());
             mItemDescription.setText(list.get(position).getDescription());
-            mItemImg.setImageResource(list.get(position).getImgSrc());
+
+            GlideApp.with(mItemImg.getContext())
+                    .load(list.get(position).getImgSrc())
+                    .into(mItemImg);
 
             //Listens when an item is clicked, and executes the interface's method
             mLayout.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applaudo.tourguideapp.GlideApp;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.R;
@@ -65,7 +66,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         //Sets the views
         if (place != null) {
             mDetailsDescription.setText(place.getDescription());
-            mDetailsImage.setImageResource(place.getImgSrc());
+            GlideApp.with(getApplicationContext()).load(place.getImgSrc()).into(mDetailsImage);
             mDetailsLocation.setText(place.getLocation());
         }
     }
