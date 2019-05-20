@@ -192,3 +192,5 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/linux,gradle,android,intellij
 
 \.idea/misc\.xml
+
+\.idea/encodings\.xml

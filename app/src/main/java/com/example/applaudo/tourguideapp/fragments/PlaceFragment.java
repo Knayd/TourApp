@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.applaudo.tourguideapp.TourApp;
 import com.example.applaudo.tourguideapp.network.TourApi;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.model.Place;
@@ -33,6 +34,8 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
 
     PlacesAdapter adapter;
     RecyclerView recyclerView;
+    TourApi tourApi = TourApp.getTourApi();
+    public static final String ARG_CATEGORY_ID = "ARG_CATEGORY_ID";
 
     @Nullable
     @Override
@@ -45,28 +48,10 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
         recyclerView = view.findViewById(R.id.rv_fragments);
 
         //This is where I retrieve the tab number
-        Bundle getTabData = getArguments();
-        String id = "1";
-        if (getTabData != null) {
-            int mLoadType = getTabData.getInt("tabnumber");
-            if (mLoadType == 0) {
-               id = "1";
-            } else if (mLoadType == 1) {
-                id = "2";
-            } else if (mLoadType == 2) {
-                id = "3";
-            } else {
-                id = "3";
-            }
-        }
+        Bundle arguments = getArguments();
+        String id = arguments.getString(ARG_CATEGORY_ID);
 
-        TourApi tourApi = getRetrofit(new OkHttpClient.Builder().build());
-
-        Call<List<Place>> call = tourApi.getPlaces(id);
-
-
-
-        call.enqueue(new Callback<List<Place>>() {
+        tourApi.getPlaces(id).enqueue(new Callback<List<Place>>() {
             @Override
             public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
                 setPlaces(response.body());
@@ -96,16 +81,6 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     private void prepareRecycler(){
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
-    }
-
-    private TourApi getRetrofit(OkHttpClient client){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(TourApi.BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        return retrofit.create(TourApi.class);
     }
 
     //Implementation of the interface

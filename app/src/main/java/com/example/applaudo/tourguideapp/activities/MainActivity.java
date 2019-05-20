@@ -6,18 +6,32 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.example.applaudo.tourguideapp.fragments.PlaceFragment;
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.TourApp;
+import com.example.applaudo.tourguideapp.fragments.PlaceFragment;
+import com.example.applaudo.tourguideapp.model.Category;
+import com.example.applaudo.tourguideapp.network.TourApi;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TourApi tourApi = TourApp.getTourApi();
+    private ViewPager viewPager;
+    private Toolbar mainToolbar;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,53 +39,71 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Find the ViewPager that allows the user to swap
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        Toolbar mainToolbar = findViewById(R.id.main_toolbar);
+        viewPager = findViewById(R.id.viewpager);
+        mainToolbar = findViewById(R.id.main_toolbar);
+        tabLayout = findViewById(R.id.tabs);
 
-        PlacesFragmentPagerAdapter adapter = new PlacesFragmentPagerAdapter(getSupportFragmentManager());
+        init();
+
+    }
+
+    private void init() {
+        tourApi.getCategories().enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                setViews(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Failure with viewpager", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setViews(List<Category> categories) {
+        PlacesFragmentPagerAdapter adapter = new PlacesFragmentPagerAdapter(categories, getSupportFragmentManager());
 
         viewPager.setAdapter(adapter);
-
-        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         setSupportActionBar(mainToolbar);
-
     }
 
     //ViewPager adapter
     private class PlacesFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
         //Stores the id of the tab titles resource
-        private int[] mTabTitles = {(R.string.tab_str_1), (R.string.tab_str_2), (R.string.tab_str_3), (R.string.tab_str_4)};
+        private List<Category> categories;
+
+        PlacesFragmentPagerAdapter(List<Category> categories, FragmentManager manager) {
+            super(manager);
+            this.categories = categories;
+        }
+
 
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return getResources().getString(mTabTitles[position]);
-        }
-
-        PlacesFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
+            return categories.get(position).getName();
         }
 
         @Override
         public Fragment getItem(int position) {
 
             //This is where I store the type based on the tab number
-            Bundle tabData = new Bundle();
-            tabData.putInt("tabnumber", position);
+            Bundle arguments = new Bundle();
+            arguments.putString(PlaceFragment.ARG_CATEGORY_ID, categories.get(position).getId());
 
             PlaceFragment frag = new PlaceFragment();
-            frag.setArguments(tabData);
+            frag.setArguments(arguments);
 
             return frag;
-
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return categories.size();
         }
     }
 
@@ -91,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openVisitLater(){
+    private void openVisitLater() {
         Intent intent = new Intent(getApplicationContext(), VisitLaterActivity.class);
         startActivity(intent);
     }

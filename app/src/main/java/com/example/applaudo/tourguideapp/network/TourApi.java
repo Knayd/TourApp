@@ -1,5 +1,6 @@
 package com.example.applaudo.tourguideapp.network;
 
+import com.example.applaudo.tourguideapp.model.Category;
 import com.example.applaudo.tourguideapp.model.Place;
 
 import java.util.List;
@@ -15,5 +16,8 @@ public interface TourApi {
 
     @GET("Lugares")
     Call<List<Place>> getPlaces(@Query("idcateg") String id);
+
+    @GET("Categorias")
+    Call<List<Category>> getCategories();
 
 }

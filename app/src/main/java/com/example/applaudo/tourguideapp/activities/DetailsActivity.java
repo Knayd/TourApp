@@ -33,6 +33,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private Place place;
     private String action;
     private DetailViewModel viewModel;
+    private GoogleMap googleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,10 +153,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng place = new LatLng(13.701649, -89.224681);
-        googleMap.addMarker(new MarkerOptions().position(place)
+        this.googleMap = googleMap;
+        setMapPosition();
+    }
+
+    private void setMapPosition(){
+        LatLng position = new LatLng(Double.parseDouble(place.getLatitude()), Double.parseDouble(place.getLongitude()));
+        googleMap.addMarker(new MarkerOptions().position(position)
                 .title("Ubicación"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(place));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 15.0f));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15.0f));
     }
 }
