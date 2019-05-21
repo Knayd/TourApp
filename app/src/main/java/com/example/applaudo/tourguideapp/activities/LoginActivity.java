@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         tourApi.getUser(user, pass).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     User user = response.body();
 
                     if (user.getRole() != null && user.getUserName() != null) {
@@ -88,6 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.INVISIBLE);
                     }
 
+                } else {
+                    Snackbar.make(findViewById(android.R.id.content), getString(R.string.something_went_wrong), Snackbar.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             }
 
