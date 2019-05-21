@@ -13,6 +13,7 @@
     <string name="visit_later">Visitar más tarde</string>
     <string name="add">Agregar</string>
     <string name="delete">Eliminar</string>
+    <string name="logout">Cerrar sesión</string>
 
     <string name="added_complete_message">Se ha añadido <b> %1$s </b> a "Visitar más tarde" </string>
     <string name="deleted_complete_message">Se ha eliminado <b> %1$s </b> de "Visitar más tarde" </string>

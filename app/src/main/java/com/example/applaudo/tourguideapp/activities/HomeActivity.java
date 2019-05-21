@@ -123,7 +123,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.home_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -133,6 +133,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.action_visit_later:
                 openVisitLater();
                 break;
+            case R.id.action_log_out:
+                logOut();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -140,5 +144,12 @@ public class HomeActivity extends AppCompatActivity {
     private void openVisitLater() {
         Intent intent = new Intent(getApplicationContext(), VisitLaterActivity.class);
         startActivity(intent);
+    }
+
+    private void logOut(){
+        TourApp.getPreferences().setShouldKeepUserLogged(false);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

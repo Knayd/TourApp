@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_place"
         app:showAsAction="always"
         android:title="@string/visit_later">
+    </item>
 
+    <item android:id="@+id/action_log_out"
+        app:showAsAction="never"
+        android:title="@string/logout">
     </item>
 </menu>
