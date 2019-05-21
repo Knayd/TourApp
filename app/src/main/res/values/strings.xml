@@ -19,7 +19,10 @@
 
     <string name="empty_places_message">Parece que aún no agregas lugares.</string>
 
-
+    <string name="login_user_label">Usuario</string>
+    <string name="login_user_password">Contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="keep_me_logged">Mantenerme logueado</string>
 
 
 </resources>
