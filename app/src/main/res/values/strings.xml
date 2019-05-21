@@ -24,5 +24,10 @@
     <string name="login">Ingresar</string>
     <string name="keep_me_logged">Mantenerme logueado</string>
 
+    <string name="something_went_wrong">Sucedió un error al tratar de obtener la información.</string>
+    <string name="wrong_credentials">Credenciales incorrectas.</string>
+
+
+
 
 </resources>

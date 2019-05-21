@@ -2,8 +2,10 @@ package com.example.applaudo.tourguideapp;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.example.applaudo.tourguideapp.network.TourApi;
+import com.example.applaudo.tourguideapp.util.UserPreferences;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -13,11 +15,13 @@ public class TourApp extends Application {
 
     private static Context context;
     private static TourApi tourApi;
+    private static UserPreferences preferences;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        preferences = new UserPreferences(this);
     }
 
     public static Context getContext() {
@@ -36,5 +40,9 @@ public class TourApp extends Application {
         }
 
         return tourApi;
+    }
+
+    public static UserPreferences getPreferences(){
+       return preferences;
     }
 }
