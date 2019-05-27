@@ -2,6 +2,7 @@ package com.example.applaudo.tourguideapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,6 +22,12 @@ import com.example.applaudo.tourguideapp.TourApp;
 import com.example.applaudo.tourguideapp.fragments.PlaceFragment;
 import com.example.applaudo.tourguideapp.model.Category;
 import com.example.applaudo.tourguideapp.network.TourApi;
+import com.example.applaudo.tourguideapp.util.FirebaseTopics;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 
@@ -34,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private TabLayout tabLayout;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private String TAG = "HomeActivityTag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
         init();
         setRefreshListener();
+        registerForNotifications();
 
     }
 
@@ -74,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(mainToolbar);
     }
 
-    private void setRefreshListener(){
+    private void setRefreshListener() {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -146,10 +156,35 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void logOut(){
+    private void logOut() {
         TourApp.getPreferences().setShouldKeepUserLogged(false);
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    private void getToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        String firebaseToken = task.getResult().getToken();
+
+                        Log.i(TAG, firebaseToken);
+                    }
+                });
+    }
+
+    public void registerForNotifications() {
+        FirebaseMessaging.getInstance().subscribeToTopic(FirebaseTopics.ALL_TOPIC).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(!task.isSuccessful()){
+                    Log.i(TAG, "Registration failed");
+                } else {
+                    Log.i(TAG, "Successfully registered");
+                }
+            }
+        });
     }
 }
