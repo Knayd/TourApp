@@ -44,6 +44,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
                 .setSmallIcon(R.drawable.ic_logo)
                 .setContentTitle(title)
                 .setContentText(body)
+                .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
