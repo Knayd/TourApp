@@ -2,11 +2,15 @@ package com.example.applaudo.tourguideapp.network;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.activities.DetailsActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -47,8 +51,17 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+        builder.setContentIntent(createPendingIntent());
+
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    private PendingIntent createPendingIntent(){
+        Intent intent = new Intent(this, DetailsActivity.class);
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
+        taskStackBuilder.addNextIntentWithParentStack(intent);
+        return taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
 

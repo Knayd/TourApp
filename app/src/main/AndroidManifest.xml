@@ -35,7 +35,11 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".activities.HomeActivity" /> <!-- This is for the Up Button in the Details activity -->
-        <activity android:name=".activities.DetailsActivity" />
+
+        <activity
+            android:name=".activities.DetailsActivity"
+            android:parentActivityName=".activities.HomeActivity" />
+
         <activity android:name=".activities.PlaceWebView" />
 
         <service
