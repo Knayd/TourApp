@@ -8,6 +8,7 @@ import com.example.applaudo.tourguideapp.network.TourApi;
 import com.example.applaudo.tourguideapp.util.UserPreferences;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -31,9 +32,13 @@ public class TourApp extends Application {
     public static TourApi getTourApi() {
 
         if (tourApi == null) {
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(TourApi.BASE_URL)
-                    .client(new OkHttpClient.Builder().build())
+                    .client(new OkHttpClient.Builder().addInterceptor(interceptor).build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             tourApi = retrofit.create(TourApi.class);
