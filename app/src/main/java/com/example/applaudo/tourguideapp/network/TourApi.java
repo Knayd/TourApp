@@ -17,7 +17,10 @@ public interface TourApi {
 
 
     @GET("Lugares")
-    Call<List<Place>> getPlaces(@Query("idcateg") String id);
+    Call<List<Place>> getPlaces(@Query("idcateg") String idCateg);
+
+    @GET("Lugares")
+    Call<List<Place>> getSinglePlace(@Query("idLugar") String placeId);
 
     @GET("Categorias")
     Call<List<Category>> getCategories();

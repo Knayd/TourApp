@@ -27,14 +27,15 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
 
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
+        String placeId = remoteMessage.getData().get("place_id");
 
         createNotificationChannel();
-        showNotification(title, body);
+        showNotification(title, body, placeId);
 
     }
 
-    private void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription(CHANNEL_DESCRIPTION);
 
@@ -43,7 +44,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
         }
     }
 
-    private void showNotification(String title, String body){
+    private void showNotification(String title, String body, String placeId) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_logo)
                 .setContentTitle(title)
@@ -51,14 +52,15 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        builder.setContentIntent(createPendingIntent());
+        builder.setContentIntent(createPendingIntent(placeId));
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(NOTIFICATION_ID, builder.build());
     }
 
-    private PendingIntent createPendingIntent(){
+    private PendingIntent createPendingIntent(String placeId) {
         Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(DetailsActivity.EXTRA_PLACE_ID, placeId);
         TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
         taskStackBuilder.addNextIntentWithParentStack(intent);
         return taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);

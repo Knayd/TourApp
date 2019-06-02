@@ -14,9 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applaudo.tourguideapp.GlideApp;
-import com.example.applaudo.tourguideapp.util.DetailActions;
-import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.TourApp;
+import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.viewmodel.DetailViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,50 +26,57 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     public final static String EXTRA_PLACE = "extra_place";
     public final static String EXTRA_ACTION = "extra_action";
+    public final static String EXTRA_PLACE_ID = "extra_place_id";
 
     private Place place;
     private String action;
+    private String placeId;
     private DetailViewModel viewModel;
     private GoogleMap googleMap;
+    private TextView mDetailsDescription, mDetailsLocation;
+    private ImageView mDetailsImage;
+    private View mTelButton, mWebsiteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        prepareMap();
-
         Toolbar detailToolbar = findViewById(R.id.detail_toolbar);
         setSupportActionBar(detailToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
-        action = getIntent().getExtras().getString(EXTRA_ACTION);
-
         viewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
 
-        setTitle(place.getName());
-
-
         //Gets the views
-        TextView mDetailsDescription = findViewById(R.id.details_description);
-        ImageView mDetailsImage = findViewById(R.id.details_img);
-        TextView mDetailsLocation = findViewById(R.id.details_location);
-        View mTelButton = findViewById(R.id.view_tel_container);
-        View mWebsiteButton = findViewById(R.id.view_website_container);
+        mDetailsDescription = findViewById(R.id.details_description);
+        mDetailsImage = findViewById(R.id.details_img);
+        mDetailsLocation = findViewById(R.id.details_location);
+        mTelButton = findViewById(R.id.view_tel_container);
+        mWebsiteButton = findViewById(R.id.view_website_container);
 
         mTelButton.setOnClickListener(this);
         mWebsiteButton.setOnClickListener(this);
 
+        action = getToolBarAction();
+
+        place = getIntent().getExtras().getParcelable(EXTRA_PLACE);
         //Sets the views
         if (place != null) {
-            mDetailsDescription.setText(place.getDescription());
-            GlideApp.with(getApplicationContext()).load(place.getImgSrc()).into(mDetailsImage);
-            mDetailsLocation.setText(place.getLocation());
+            setPlace(place);
+        } else {
+            placeId = getIntent().getExtras().getString(EXTRA_PLACE_ID);
+            getSinglePlaceById(placeId);
         }
     }
 
@@ -82,6 +90,47 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 openWebView(place.getWebsite());
                 break;
         }
+    }
+
+    private void setPlace(Place place) {
+        setTitle(place.getName());
+        mDetailsDescription.setText(place.getDescription());
+        GlideApp.with(getApplicationContext()).load(place.getImgSrc()).into(mDetailsImage);
+        mDetailsLocation.setText(place.getLocation());
+        this.place = place;
+        prepareMap();
+    }
+
+    private void getSinglePlaceById(String placeId) {
+        TourApp.getTourApi().getSinglePlace(placeId).enqueue(new Callback<List<Place>>() {
+            @Override
+            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    setPlace(response.body().get(0));
+                } else {
+                    onBackPressed();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Place>> call, Throwable t) {
+                onBackPressed();
+            }
+        });
+    }
+
+
+    private String getToolBarAction() {
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String action = bundle.getString(EXTRA_ACTION);
+            if (action != null) {
+                return action;
+            }
+        }
+
+        return DetailActions.ACTION_ADD;
+
     }
 
 
@@ -116,7 +165,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.added_complete_message, place.getName()), Snackbar.LENGTH_LONG).show();
     }
 
-    private void deletePlaceFromVisitLater(Place place){
+    private void deletePlaceFromVisitLater(Place place) {
         viewModel.deletePlace(place);
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.deleted_complete_message, place.getName()), Snackbar.LENGTH_LONG).show();
     }
@@ -157,7 +206,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         setMapPosition();
     }
 
-    private void setMapPosition(){
+    private void setMapPosition() {
         LatLng position = new LatLng(Double.parseDouble(place.getLatitude()), Double.parseDouble(place.getLongitude()));
         googleMap.addMarker(new MarkerOptions().position(position)
                 .title("Ubicación"));
