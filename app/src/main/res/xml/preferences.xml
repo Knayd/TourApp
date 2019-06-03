@@ -8,7 +8,7 @@
             android:title="@string/get_notifications" />
 
         <Preference
-            android:key="logout"
+            android:key="@string/pref_logout"
             android:layout="@layout/button_logout"
             android:title="@string/logout" />
     </PreferenceCategory>
