@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.SettingsActivity"></activity>
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,11 +36,9 @@
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".activities.HomeActivity" /> <!-- This is for the Up Button in the Details activity -->
-
         <activity
             android:name=".activities.DetailsActivity"
             android:parentActivityName=".activities.HomeActivity" />
-
         <activity android:name=".activities.PlaceWebView" />
 
         <service

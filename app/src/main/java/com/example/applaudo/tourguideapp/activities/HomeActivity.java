@@ -146,6 +146,9 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.action_log_out:
                 logOut();
                 break;
+            case R.id.action_settings:
+                openSettings();
+                break;
 
         }
         return super.onOptionsItemSelected(item);
@@ -173,6 +176,11 @@ public class HomeActivity extends AppCompatActivity {
                         Log.i(TAG, firebaseToken);
                     }
                 });
+    }
+
+    private void openSettings(){
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
     }
 
     public void registerForNotifications() {
