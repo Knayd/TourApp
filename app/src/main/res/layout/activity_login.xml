@@ -87,7 +87,9 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:layout_marginTop="48dp"
-        android:background="@drawable/button_background_normal" />
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:background="@drawable/button_primary" />
 
     <CheckBox
         android:id="@+id/keep_me_logged"

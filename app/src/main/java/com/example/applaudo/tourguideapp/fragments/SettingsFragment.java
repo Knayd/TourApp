@@ -1,13 +1,16 @@
 package com.example.applaudo.tourguideapp.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.widget.Toast;
 
 import com.example.applaudo.tourguideapp.R;
 import com.example.applaudo.tourguideapp.TourApp;
+import com.example.applaudo.tourguideapp.activities.LoginActivity;
+import com.example.applaudo.tourguideapp.util.FirebaseTopics;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -23,17 +26,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         logoutButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(TourApp.getContext(), "Log out", Toast.LENGTH_SHORT).show();
+                logOut();
                 return true;
             }
         });
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_settings, container, false);
-//    }
+    private void logOut() {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(FirebaseTopics.ALL_TOPIC);
+        TourApp.getPreferences().setShouldKeepUserLogged(false);
+
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
 }
