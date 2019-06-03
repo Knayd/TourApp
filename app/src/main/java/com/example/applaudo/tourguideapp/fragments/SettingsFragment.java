@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.TourApp;
+import com.example.applaudo.tourguideapp.util.UserPreferences;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -12,6 +14,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String root) {
+        getPreferenceManager().setSharedPreferencesName(TourApp.getContext().getString(R.string.user_preferences));
         setPreferencesFromResource(R.xml.preferences, root);
     }
 

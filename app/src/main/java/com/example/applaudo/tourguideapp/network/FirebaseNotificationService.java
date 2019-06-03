@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.TourApp;
 import com.example.applaudo.tourguideapp.activities.DetailsActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -24,6 +25,10 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        if (!TourApp.getPreferences().shouldDisplayNotifications()) {
+            return;
+        }
 
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");

@@ -11,7 +11,7 @@ public class UserPreferences {
     private Context context;
     private SharedPreferences preferences;
 
-    private static String USER_PREFERENCES = "TOUR_APP_USER_PREFERENCES";
+    private static String USER_PREFERENCES = TourApp.getContext().getString(R.string.user_preferences);
     private static String PREF_KEEP_ME_LOGGED = TourApp.getContext().getString(R.string.pref_keep_me_logged);
     private static String PREF_SHOW_NOTIFICATIONS = TourApp.getContext().getString(R.string.pref_get_notifications);
     private static String PREF_DARK_THEME = TourApp.getContext().getString(R.string.pref_dark_theme);

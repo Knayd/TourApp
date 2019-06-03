@@ -19,10 +19,12 @@
     <string name="get_notifications">Recibir notificaciones.</string>
 
     <!--Preferences keys-->
+    <string name="user_preferences">TOUR_APP_USER_PREFERENCES</string>
     <string name="pref_get_notifications">PREF_SHOW_NOTIFICATIONS</string>
     <string name="pref_keep_me_logged">PREF_KEEP_ME_LOGGED</string>
     <string name="pref_dark_theme">PREF_DARK_THEME</string>
 
+    <string name="pref_logout">PREF_LOGOUT</string>
 
     <string name="added_complete_message">Se ha añadido <b> %1$s </b> a "Visitar más tarde" </string>
     <string name="deleted_complete_message">Se ha eliminado <b> %1$s </b> de "Visitar más tarde" </string>
