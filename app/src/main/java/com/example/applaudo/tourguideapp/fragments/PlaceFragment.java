@@ -66,7 +66,6 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
 
             @Override
             public void onFailure(Call<List<Place>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failure", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
             }
         });

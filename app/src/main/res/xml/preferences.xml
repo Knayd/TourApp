@@ -3,18 +3,23 @@
     <PreferenceCategory android:title="@string/preferences">
 
         <SwitchPreference
-            android:icon="@drawable/ic_notifications"
             android:defaultValue="true"
+            android:icon="@drawable/ic_notifications"
             android:key="@string/pref_get_notifications"
             android:title="@string/get_notifications" />
 
         <SwitchPreference
-            android:icon="@drawable/ic_color"
             android:defaultValue="false"
+            android:icon="@drawable/ic_color"
             android:key="@string/pref_dark_theme"
-            android:title="@string/dark_theme"
             android:summary="@string/dark_theme_warning"
-            />
+            android:title="@string/dark_theme" />
+
+        <SwitchPreference
+            android:icon="@drawable/ic_vibration"
+            android:defaultValue="true"
+            android:key="@string/pref_force_vibration"
+            android:title="@string/always_vibrate" />
 
         <Preference
             android:key="@string/pref_logout"

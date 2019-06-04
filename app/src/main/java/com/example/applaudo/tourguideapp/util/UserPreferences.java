@@ -15,6 +15,8 @@ public class UserPreferences {
     private static String PREF_KEEP_ME_LOGGED = TourApp.getContext().getString(R.string.pref_keep_me_logged);
     private static String PREF_SHOW_NOTIFICATIONS = TourApp.getContext().getString(R.string.pref_get_notifications);
     private static String PREF_DARK_THEME = TourApp.getContext().getString(R.string.pref_dark_theme);
+    private static String PREF_FORCE_VIBRATION = TourApp.getContext().getString(R.string.pref_force_vibration);
+
 
     public UserPreferences(Context context) {
         this.context = context;
@@ -42,7 +44,15 @@ public class UserPreferences {
     }
 
     public void setShoudlDisplayDarkTheme(Boolean value) {
-        preferences.edit().putBoolean(PREF_DARK_THEME, value);
+        preferences.edit().putBoolean(PREF_DARK_THEME, value).apply();
+    }
+
+    public Boolean shouldForceVibration() {
+        return preferences.getBoolean(PREF_FORCE_VIBRATION, true);
+    }
+
+    public void setShouldForceVibration(Boolean value) {
+        preferences.edit().putBoolean(PREF_FORCE_VIBRATION, value).apply();
     }
 
 }

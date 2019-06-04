@@ -19,6 +19,7 @@
     <string name="get_notifications">Recibir notificaciones.</string>
     <string name="dark_theme">Tema oscuro.</string>
     <string name="dark_theme_warning">Precaución: Esta opción reiniciará la app.</string>
+    <string name="always_vibrate">Vibración para notificaciones.</string>
     <string name="no_places">No se encontraron lugares :c </string>
 
 
@@ -29,6 +30,8 @@
     <string name="pref_get_notifications">PREF_SHOW_NOTIFICATIONS</string>
     <string name="pref_keep_me_logged">PREF_KEEP_ME_LOGGED</string>
     <string name="pref_dark_theme">PREF_DARK_THEME</string>
+    <string name="pref_force_vibration">PREF_FORCE_VIBRATION</string>
+
 
     <string name="pref_logout">PREF_LOGOUT</string>
 

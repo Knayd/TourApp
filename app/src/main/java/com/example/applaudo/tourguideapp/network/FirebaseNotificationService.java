@@ -58,6 +58,10 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+        if(TourApp.getPreferences().shouldForceVibration()){
+            builder.setVibrate(new long[] { 0, 1000, 1000, 1000, 1000 });
+        }
+
         if(placeWasDeleted == null || !placeWasDeleted.equals("true")){
             builder.setContentIntent(createPendingIntent(placeId));
         }
