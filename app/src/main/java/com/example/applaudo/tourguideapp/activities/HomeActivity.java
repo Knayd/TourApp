@@ -55,6 +55,8 @@ public class HomeActivity extends ActivityThemeHelper {
         tabLayout = findViewById(R.id.tabs);
         swipeRefreshLayout = findViewById(R.id.refresh_layout);
 
+        setSupportActionBar(mainToolbar);
+
         init();
         setRefreshListener();
         registerForNotifications();
@@ -81,7 +83,6 @@ public class HomeActivity extends ActivityThemeHelper {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        setSupportActionBar(mainToolbar);
     }
 
     private void setRefreshListener() {
@@ -154,25 +155,6 @@ public class HomeActivity extends ActivityThemeHelper {
     private void openVisitLater() {
         Intent intent = new Intent(getApplicationContext(), VisitLaterActivity.class);
         startActivity(intent);
-    }
-
-    private void logOut() {
-        TourApp.getPreferences().setShouldKeepUserLogged(false);
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    private void getToken() {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        String firebaseToken = task.getResult().getToken();
-
-                        Log.i(TAG, firebaseToken);
-                    }
-                });
     }
 
     private void openSettings(){

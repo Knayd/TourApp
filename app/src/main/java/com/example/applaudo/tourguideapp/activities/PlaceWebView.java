@@ -10,8 +10,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
 
-public class PlaceWebView extends AppCompatActivity {
+public class PlaceWebView extends ActivityThemeHelper {
 
     private static final String EXT_URL = "EXT_URL";
 

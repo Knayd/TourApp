@@ -36,6 +36,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
+
+        Preference darkTheme = findPreference(getString(R.string.pref_dark_theme));
+        darkTheme.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                reOpenApp();
+                return true;
+            }
+        });
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -43,6 +53,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         FirebaseMessaging.getInstance().unsubscribeFromTopic(FirebaseTopics.ALL_TOPIC);
         TourApp.getPreferences().setShouldKeepUserLogged(false);
 
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    private void reOpenApp(){
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

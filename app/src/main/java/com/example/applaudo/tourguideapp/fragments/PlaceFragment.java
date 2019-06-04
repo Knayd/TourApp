@@ -10,31 +10,32 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.applaudo.tourguideapp.R;
 import com.example.applaudo.tourguideapp.TourApp;
+import com.example.applaudo.tourguideapp.activities.DetailsActivity;
+import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
+import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.network.TourApi;
 import com.example.applaudo.tourguideapp.util.DetailActions;
-import com.example.applaudo.tourguideapp.model.Place;
-import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
-import com.example.applaudo.tourguideapp.R;
-import com.example.applaudo.tourguideapp.activities.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClicked {
 
     PlacesAdapter adapter;
     RecyclerView recyclerView;
     TourApi tourApi = TourApp.getTourApi();
+    ProgressBar progressBar;
+    TextView emptyPlacesMessage;
     public static final String ARG_CATEGORY_ID = "ARG_CATEGORY_ID";
 
     @Nullable
@@ -46,6 +47,8 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
         View view = inflater.inflate(R.layout.fragment_places, container, false);
 
         recyclerView = view.findViewById(R.id.rv_fragments);
+        progressBar = view.findViewById(R.id.places_progress_bar);
+        emptyPlacesMessage = view.findViewById(R.id.no_places_message);
 
         //This is where I retrieve the tab number
         Bundle arguments = getArguments();
@@ -55,11 +58,16 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
             @Override
             public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
                 setPlaces(response.body());
+                progressBar.setVisibility(View.GONE);
+                if (response.body() == null || response.body().isEmpty()) {
+                    emptyPlacesMessage.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Place>> call, Throwable t) {
                 Toast.makeText(getContext(), "Failure", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -69,16 +77,17 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
         return view;
     }
 
-    private void setPlaces(List<Place> places){
-        if(adapter == null){
+    private void setPlaces(List<Place> places) {
+        if (adapter == null) {
             adapter = new PlacesAdapter(places, this);
             recyclerView.setAdapter(adapter);
         } else {
             adapter.updatePlaces(places);
         }
+
     }
 
-    private void prepareRecycler(){
+    private void prepareRecycler() {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
     }

@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="?android:attr/actionBarSize"
             app:tabMode="scrollable"
-            app:tabIndicatorColor="@android:color/black"
+            app:tabIndicatorColor="@android:color/white"
             app:tabTextColor="@android:color/white"
             android:background="?colorPrimary"
             app:tabSelectedTextColor="@android:color/white"

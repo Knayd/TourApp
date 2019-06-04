@@ -19,6 +19,8 @@
     <string name="get_notifications">Recibir notificaciones.</string>
     <string name="dark_theme">Tema oscuro.</string>
     <string name="dark_theme_warning">Precaución: Esta opción reiniciará la app.</string>
+    <string name="no_places">No se encontraron lugares :c </string>
+
 
 
 
