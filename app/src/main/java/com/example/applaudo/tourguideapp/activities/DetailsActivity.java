@@ -204,6 +204,7 @@ public class DetailsActivity extends ActivityThemeHelper implements View.OnClick
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
+        setMapMode();
         setMapPosition();
     }
 
@@ -213,5 +214,13 @@ public class DetailsActivity extends ActivityThemeHelper implements View.OnClick
                 .title("Ubicación"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(position));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15.0f));
+    }
+
+    private void setMapMode(){
+        if(TourApp.getPreferences().shouldDisplayMapsInSatelliteMode()){
+            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        } else {
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        }
     }
 }

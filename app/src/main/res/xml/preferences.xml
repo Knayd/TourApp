@@ -16,14 +16,22 @@
             android:title="@string/dark_theme" />
 
         <SwitchPreference
-            android:icon="@drawable/ic_vibration"
             android:defaultValue="true"
+            android:icon="@drawable/ic_vibration"
             android:key="@string/pref_force_vibration"
             android:title="@string/always_vibrate" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_map"
+            android:key="@string/pref_maps_satellite_mode"
+            android:title="@string/maps_satellite_mode" />
 
         <Preference
             android:key="@string/pref_logout"
             android:layout="@layout/button_logout"
             android:title="@string/logout" />
+
+
     </PreferenceCategory>
 </PreferenceScreen>

@@ -20,10 +20,8 @@
     <string name="dark_theme">Tema oscuro.</string>
     <string name="dark_theme_warning">Precaución: Esta opción reiniciará la app.</string>
     <string name="always_vibrate">Vibración para notificaciones.</string>
+    <string name="maps_satellite_mode">Mapas en modo satélite.</string>
     <string name="no_places">No se encontraron lugares :c </string>
-
-
-
 
     <!--Preferences keys-->
     <string name="user_preferences">TOUR_APP_USER_PREFERENCES</string>
@@ -31,6 +29,8 @@
     <string name="pref_keep_me_logged">PREF_KEEP_ME_LOGGED</string>
     <string name="pref_dark_theme">PREF_DARK_THEME</string>
     <string name="pref_force_vibration">PREF_FORCE_VIBRATION</string>
+    <string name="pref_maps_satellite_mode">PREF_MAPS_SATELLITE_MODE</string>
+
 
 
     <string name="pref_logout">PREF_LOGOUT</string>

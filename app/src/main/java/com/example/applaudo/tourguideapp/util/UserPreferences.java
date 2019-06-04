@@ -16,7 +16,7 @@ public class UserPreferences {
     private static String PREF_SHOW_NOTIFICATIONS = TourApp.getContext().getString(R.string.pref_get_notifications);
     private static String PREF_DARK_THEME = TourApp.getContext().getString(R.string.pref_dark_theme);
     private static String PREF_FORCE_VIBRATION = TourApp.getContext().getString(R.string.pref_force_vibration);
-
+    private static String PREF_MAP_SATELLITE_MODE = TourApp.getContext().getString(R.string.pref_maps_satellite_mode);
 
     public UserPreferences(Context context) {
         this.context = context;
@@ -53,6 +53,14 @@ public class UserPreferences {
 
     public void setShouldForceVibration(Boolean value) {
         preferences.edit().putBoolean(PREF_FORCE_VIBRATION, value).apply();
+    }
+
+    public Boolean shouldDisplayMapsInSatelliteMode() {
+        return preferences.getBoolean(PREF_MAP_SATELLITE_MODE, false);
+    }
+
+    public void setShouldDisplayMapsInSatelliteMode(Boolean value) {
+        preferences.edit().putBoolean(PREF_MAP_SATELLITE_MODE, value).apply();
     }
 
 }
