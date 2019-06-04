@@ -33,9 +33,10 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
         String placeId = remoteMessage.getData().get("place_id");
+        String deleted = remoteMessage.getData().get("deleted");
 
         createNotificationChannel();
-        showNotification(title, body, placeId);
+        showNotification(title, body, placeId, deleted);
 
     }
 
@@ -49,7 +50,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
         }
     }
 
-    private void showNotification(String title, String body, String placeId) {
+    private void showNotification(String title, String body, String placeId, String placeWasDeleted) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_logo)
                 .setContentTitle(title)
@@ -57,7 +58,9 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        builder.setContentIntent(createPendingIntent(placeId));
+        if(placeWasDeleted == null || !placeWasDeleted.equals("true")){
+            builder.setContentIntent(createPendingIntent(placeId));
+        }
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(NOTIFICATION_ID, builder.build());
