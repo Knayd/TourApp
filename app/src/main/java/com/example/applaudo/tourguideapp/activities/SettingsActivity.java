@@ -6,8 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends ActivityThemeHelper {
 
     Toolbar settingsToolbar;
 

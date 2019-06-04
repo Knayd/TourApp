@@ -13,10 +13,5 @@
         android:title="@string/settigns"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_log_out"
-        android:title="@string/logout"
-        app:showAsAction="never" />
-
 
 </menu>

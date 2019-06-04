@@ -17,13 +17,14 @@ import android.widget.TextView;
 import com.example.applaudo.tourguideapp.R;
 import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
 import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.viewmodel.VisitLaterViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VisitLaterActivity extends AppCompatActivity implements PlacesAdapter.OnItemClicked {
+public class VisitLaterActivity extends ActivityThemeHelper implements PlacesAdapter.OnItemClicked {
 
     private ArrayList<Place> placesToVisit;
     private PlacesAdapter placesToVisitAdapter;

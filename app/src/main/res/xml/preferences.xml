@@ -3,9 +3,18 @@
     <PreferenceCategory android:title="@string/preferences">
 
         <SwitchPreference
+            android:icon="@drawable/ic_notifications"
             android:defaultValue="true"
             android:key="@string/pref_get_notifications"
             android:title="@string/get_notifications" />
+
+        <SwitchPreference
+            android:icon="@drawable/ic_color"
+            android:defaultValue="false"
+            android:key="@string/pref_dark_theme"
+            android:title="@string/dark_theme"
+            android:summary="@string/dark_theme_warning"
+            />
 
         <Preference
             android:key="@string/pref_logout"

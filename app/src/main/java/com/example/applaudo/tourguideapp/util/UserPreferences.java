@@ -37,4 +37,12 @@ public class UserPreferences {
         preferences.edit().putBoolean(PREF_SHOW_NOTIFICATIONS, value).apply();
     }
 
+    public Boolean shouldDisplayDarkTheme() {
+        return preferences.getBoolean(PREF_DARK_THEME, false);
+    }
+
+    public void setShoudlDisplayDarkTheme(Boolean value) {
+        preferences.edit().putBoolean(PREF_DARK_THEME, value);
+    }
+
 }

@@ -17,6 +17,7 @@ import com.example.applaudo.tourguideapp.GlideApp;
 import com.example.applaudo.tourguideapp.R;
 import com.example.applaudo.tourguideapp.TourApp;
 import com.example.applaudo.tourguideapp.model.Place;
+import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
 import com.example.applaudo.tourguideapp.util.DetailActions;
 import com.example.applaudo.tourguideapp.viewmodel.DetailViewModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
+public class DetailsActivity extends ActivityThemeHelper implements View.OnClickListener, OnMapReadyCallback {
 
     public final static String EXTRA_PLACE = "extra_place";
     public final static String EXTRA_ACTION = "extra_action";

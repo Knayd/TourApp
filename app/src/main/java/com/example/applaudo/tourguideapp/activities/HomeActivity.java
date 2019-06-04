@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -23,6 +22,7 @@ import com.example.applaudo.tourguideapp.fragments.PlaceFragment;
 import com.example.applaudo.tourguideapp.model.Category;
 import com.example.applaudo.tourguideapp.network.TourApi;
 import com.example.applaudo.tourguideapp.util.FirebaseTopics;
+import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -35,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends ActivityThemeHelper {
 
     private TourApi tourApi = TourApp.getTourApi();
     private ViewPager viewPager;
@@ -142,9 +142,6 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_visit_later:
                 openVisitLater();
-                break;
-            case R.id.action_log_out:
-                logOut();
                 break;
             case R.id.action_settings:
                 openSettings();

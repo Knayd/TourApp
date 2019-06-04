@@ -17,6 +17,10 @@
     <string name="settigns">Configuración</string>
     <string name="preferences">Preferencias</string>
     <string name="get_notifications">Recibir notificaciones.</string>
+    <string name="dark_theme">Tema oscuro.</string>
+    <string name="dark_theme_warning">Precaución: Esta opción reiniciará la app.</string>
+
+
 
     <!--Preferences keys-->
     <string name="user_preferences">TOUR_APP_USER_PREFERENCES</string>
