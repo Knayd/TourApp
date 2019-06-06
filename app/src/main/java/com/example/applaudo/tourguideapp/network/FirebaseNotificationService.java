@@ -32,7 +32,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
 
         String title = remoteMessage.getData().get("title");
         String body = remoteMessage.getData().get("body");
-        String placeId = remoteMessage.getData().get("place_id");
+        String placeId = remoteMessage.getData().get("idLugar");
         String deleted = remoteMessage.getData().get("deleted");
 
         createNotificationChannel();
