@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applaudo.tourguideapp.R;
+import com.example.applaudo.tourguideapp.TourApp;
 import com.example.applaudo.tourguideapp.adapter.PlacesAdapter;
 import com.example.applaudo.tourguideapp.model.Place;
 import com.example.applaudo.tourguideapp.util.ActivityThemeHelper;
@@ -33,6 +35,7 @@ public class VisitLaterActivity extends ActivityThemeHelper implements PlacesAda
     private VisitLaterViewModel viewModel;
     private TextView emptyListText;
     private ImageView emptyListImage;
+    private boolean isTablet = TourApp.getContext().getResources().getBoolean(R.bool.isTablet);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,13 @@ public class VisitLaterActivity extends ActivityThemeHelper implements PlacesAda
     }
 
     private void prepareRecycler() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        visitLaterRecyclerView.setLayoutManager(layoutManager);
+        if(isTablet){
+            GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), 2);
+            visitLaterRecyclerView.setLayoutManager(manager);
+        } else {
+            LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
+            visitLaterRecyclerView.setLayoutManager(manager);
+        }
     }
 
     private void init() {

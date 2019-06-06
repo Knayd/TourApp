@@ -38,7 +38,7 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     ProgressBar progressBar;
     TextView emptyPlacesMessage;
     public static final String ARG_CATEGORY_ID = "ARG_CATEGORY_ID";
-    boolean isTablet = TourApp.getContext().getResources().getBoolean(R.bool.isTablet);
+    private boolean isTablet = TourApp.getContext().getResources().getBoolean(R.bool.isTablet);
 
     @Nullable
     @Override
