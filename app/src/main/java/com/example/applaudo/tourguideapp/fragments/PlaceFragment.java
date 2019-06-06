@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     ProgressBar progressBar;
     TextView emptyPlacesMessage;
     public static final String ARG_CATEGORY_ID = "ARG_CATEGORY_ID";
+    boolean isTablet = TourApp.getContext().getResources().getBoolean(R.bool.isTablet);
 
     @Nullable
     @Override
@@ -87,8 +89,14 @@ public class PlaceFragment extends Fragment implements PlacesAdapter.OnItemClick
     }
 
     private void prepareRecycler() {
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(manager);
+        if(isTablet){
+            GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
+            recyclerView.setLayoutManager(manager);
+        } else {
+            LinearLayoutManager manager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(manager);
+        }
+
     }
 
     //Implementation of the interface
