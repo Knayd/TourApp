@@ -23,7 +23,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     EditText edtUserName, edtUserPassword;
-    Button btnLogin;
+    Button btnLogin, btnCrash;
     CheckBox keepMeLoggedCheckBox;
     ProgressBar progressBar;
     Boolean keepUserLogged = false;
@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.login_progress_bar);
         btnLogin = findViewById(R.id.btn_login);
         keepMeLoggedCheckBox = findViewById(R.id.keep_me_logged);
+        btnCrash = findViewById(R.id.btn_crash);
 
         if (shouldOpenHome()) {
             openHomeActivity();
@@ -67,6 +68,13 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = edtUserPassword.getText().toString().trim();
 
                 doLogin(user, pass);
+            }
+        });
+
+        btnCrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                throw new RuntimeException("Oh no");
             }
         });
     }
