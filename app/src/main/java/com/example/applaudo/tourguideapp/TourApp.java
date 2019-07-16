@@ -2,8 +2,9 @@ package com.example.applaudo.tourguideapp;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 
+import com.dynatrace.android.agent.Dynatrace;
+import com.dynatrace.android.agent.conf.DynatraceConfigurationBuilder;
 import com.example.applaudo.tourguideapp.network.TourApi;
 import com.example.applaudo.tourguideapp.util.UserPreferences;
 
@@ -23,6 +24,15 @@ public class TourApp extends Application {
         super.onCreate();
         context = getApplicationContext();
         preferences = new UserPreferences(this);
+
+        if (BuildConfig.BUILD_TYPE.toLowerCase().contains("debug")) {
+            Dynatrace.startup(this,
+                    new DynatraceConfigurationBuilder(getResources().getString(R.string.dynatrace_app_id), getResources().getString(R.string.dynatrace_beacon_url))
+                            .loadDefaultProperties(this)
+                            .buildConfiguration());
+        }
+
+
     }
 
     public static Context getContext() {
@@ -47,7 +57,7 @@ public class TourApp extends Application {
         return tourApi;
     }
 
-    public static UserPreferences getPreferences(){
-       return preferences;
+    public static UserPreferences getPreferences() {
+        return preferences;
     }
 }

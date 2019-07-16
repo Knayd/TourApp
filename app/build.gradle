@@ -19,13 +19,23 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
+        resValue "string", "dynatrace_app_id", DYNATRACE_APP_ID
+        resValue "string", "dynatrace_beacon_url", DYNATRACE_BEACON_URL
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
+            testCoverageEnabled = true
+        }
+        poc1 {
+            signingConfig signingConfigs.debug
+            testCoverageEnabled = true
+        }
+        poc2 {
+            signingConfig signingConfigs.debug
             testCoverageEnabled = true
         }
     }
@@ -66,6 +76,10 @@ dependencies {
 
     //Preferences
     implementation "com.android.support:preference-v7:28.0.0"
+
+    //Dynatrace
+    implementation 'com.dynatrace.agent:agent-android:7.2.4.1262'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
@@ -84,4 +98,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     sourceDirectories = files([mainSrc])
     classDirectories = files([debugTree])
     executionData = files("${buildDir}/jacoco/testDebugUnitTest.exec")
+}
+
+apply plugin: 'com.dynatrace.tools.android'
+dynatrace {
+    defaultConfig {
+        agentProperties 'DTXAutoStart' : 'false'
+    }
 }
