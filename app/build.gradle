@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 
-jacoco{
+
+jacoco {
     toolVersion = '0.8.2'
 }
 
@@ -25,7 +26,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
+            testCoverageEnabled = true
+        }
+        poc1 {
+            signingConfig signingConfigs.debug
+            testCoverageEnabled = true
+        }
+        poc2 {
+            signingConfig signingConfigs.debug
             testCoverageEnabled = true
         }
     }
@@ -84,4 +93,15 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     sourceDirectories = files([mainSrc])
     classDirectories = files([debugTree])
     executionData = files("${buildDir}/jacoco/testDebugUnitTest.exec")
+}
+
+def task = gradle.startParameter.taskNames[0] ?: ""
+if (task.toLowerCase().contains("debug")) {
+    apply plugin: 'com.dynatrace.tools.android'
+    dynatrace {
+        defaultConfig {
+            applicationId DYNATRACE_APP_ID
+            beaconURL DYNATRACE_BEACON_URL
+        }
+    }
 }
