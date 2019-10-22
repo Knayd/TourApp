@@ -50,19 +50,4 @@ public class PlaceRepository {
                 }
         );
     }
-
-    private static class DatabaseAsyncTask extends AsyncTask<Place, Void, Void> {
-
-        private PlaceDao asyncTaskPlaceDao;
-
-        DatabaseAsyncTask(PlaceDao asyncTaskPlaceDao) {
-            this.asyncTaskPlaceDao = asyncTaskPlaceDao;
-        }
-
-        @Override
-        protected Void doInBackground(Place... places) {
-            asyncTaskPlaceDao.insert(places[0]);
-            return null;
-        }
-    }
 }
